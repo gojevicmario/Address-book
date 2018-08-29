@@ -10,17 +10,17 @@ namespace AddressBook.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ContactsController : ControllerBase
     {
         private readonly DataContext _context;
-        public ValuesController(DataContext context)
+        public ContactsController(DataContext context)
         {
             _context = context;
         }
 
         // GET api/values
         [HttpGet]
-        public async Task<IActionResult> GetValues()
+        public async Task<IActionResult> GetContacts()
         {
             var values = await _context.Contacts.ToListAsync();
 
@@ -30,7 +30,7 @@ namespace AddressBook.Api.Controllers
         
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetValue(int id)
+        public async Task<IActionResult> GetContact(int id)
         {
             var value = await _context.Contacts.FirstOrDefaultAsync(c => c.Id == id);
             return Ok(value);

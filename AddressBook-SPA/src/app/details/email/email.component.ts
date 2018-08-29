@@ -22,4 +22,5 @@ export class EmailComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
 }

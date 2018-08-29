@@ -17,7 +17,7 @@ export class ContactListComponent implements OnInit {
   }
 
   getValues() {
-    this.http.get('http://localhost:5000/api/Values').subscribe(response => {
+    this.http.get('http://localhost:5000/api/Contacts').subscribe(response => {
       this.contacts = response;
     }, error => {
       console.log(error);
