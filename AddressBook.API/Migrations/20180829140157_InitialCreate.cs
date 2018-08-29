@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AddressBook.Api.Migrations
 {
-    public partial class InitalCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,10 +12,12 @@ namespace AddressBook.Api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
                     IsBookmarked = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -23,19 +26,19 @@ namespace AddressBook.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Email",
+                name: "Emails",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EmailAddress = table.Column<string>(nullable: true),
                     ContactId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Email", x => x.Id);
+                    table.PrimaryKey("PK_Emails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Email_Contacts_ContactId",
+                        name: "FK_Emails_Contacts_ContactId",
                         column: x => x.ContactId,
                         principalTable: "Contacts",
                         principalColumn: "Id",
@@ -43,19 +46,19 @@ namespace AddressBook.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Number",
+                name: "Numbers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PhoneNumber = table.Column<string>(nullable: true),
                     ContactId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Number", x => x.Id);
+                    table.PrimaryKey("PK_Numbers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Number_Contacts_ContactId",
+                        name: "FK_Numbers_Contacts_ContactId",
                         column: x => x.ContactId,
                         principalTable: "Contacts",
                         principalColumn: "Id",
@@ -63,19 +66,19 @@ namespace AddressBook.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tag",
+                name: "Tags",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TagName = table.Column<string>(nullable: true),
                     ContactId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tag", x => x.Id);
+                    table.PrimaryKey("PK_Tags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tag_Contacts_ContactId",
+                        name: "FK_Tags_Contacts_ContactId",
                         column: x => x.ContactId,
                         principalTable: "Contacts",
                         principalColumn: "Id",
@@ -83,31 +86,31 @@ namespace AddressBook.Api.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Email_ContactId",
-                table: "Email",
+                name: "IX_Emails_ContactId",
+                table: "Emails",
                 column: "ContactId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Number_ContactId",
-                table: "Number",
+                name: "IX_Numbers_ContactId",
+                table: "Numbers",
                 column: "ContactId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tag_ContactId",
-                table: "Tag",
+                name: "IX_Tags_ContactId",
+                table: "Tags",
                 column: "ContactId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Email");
+                name: "Emails");
 
             migrationBuilder.DropTable(
-                name: "Number");
+                name: "Numbers");
 
             migrationBuilder.DropTable(
-                name: "Tag");
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Contacts");

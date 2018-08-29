@@ -1,16 +1,13 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using AddressBook.API.Models;
 
-namespace AddressBook.API.Models
+namespace AddressBook.API.Dtos
 {
-    public class Contact
+    public class ContactDto
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
         public bool IsBookmarked { get; set; }
         public List<Number> NumberList { get; set; }        
         public List<Email> EmailList { get; set; }

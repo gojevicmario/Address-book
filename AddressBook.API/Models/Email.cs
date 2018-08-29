@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace AddressBook.API.Models
 {
     public class Email
