@@ -6,9 +6,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark@test.com</td>
+      <tr *ngFor="let Email of emails; let i = index">
+        <th scope="row">{{i}}</th>
+        <td>{{Email.emailAddress}}</td>
       </tr>
     </tbody>
   </table>
