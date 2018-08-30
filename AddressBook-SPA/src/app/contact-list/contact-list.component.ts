@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as $ from 'jquery';
-import {IContact} from './IContact';
 
 @Component({
   selector: 'app-contact-list',
@@ -17,7 +15,7 @@ export class ContactListComponent implements OnInit {
   ngOnInit() {
     this.getValues();
   }
-
+  // napravi service koristis ovo u dvije komponente
   getValues() {
     this.http.get('http://localhost:5000/api/Contacts').subscribe(response => {
       this.contacts = response;

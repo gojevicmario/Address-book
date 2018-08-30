@@ -2,22 +2,25 @@
 <table class="table table-hover table-bordered">
     <thead>
       <tr>
-        <th style="width: 10%">Ordinal</th>
-        <th style="width: 18%">First name</th>
-        <th style="width: 18%">Last name</th>
-        <th style="width: 18%">Address</th>
-        <th style="width: 18%">City</th>
-        <th style="width: 18%">Country</th>
+        <th style="width: 5%">Ordinal</th>
+        <th style="width: 16%">First name</th>
+        <th style="width: 16%">Last name</th>
+        <th style="width: 16%">Address</th>
+        <th style="width: 16%">City</th>
+        <th style="width: 16%">Country</th>
+        <th style="width: 15%">Details</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Friend</td>
-        <td>Friend</td>
-        <td>Friend</td>
-        <td>Friend</td>
-        <td>Friend</td>
+      <tr *ngFor="let contact of contacts; let i = index" >
+            <th *ngIf="(contact.isBookmarked === true)" scope="row">{{i+1}}</th>
+            <td *ngIf="(contact.isBookmarked === true)">{{contact.firstName}}</td>
+            <td *ngIf="(contact.isBookmarked === true)">{{contact.lastName}}</td>
+            <td *ngIf="(contact.isBookmarked === true)">{{contact.address}}</td>
+            <td *ngIf="(contact.isBookmarked === true)">{{contact.city}}</td>
+            <td *ngIf="(contact.isBookmarked === true)">{{contact.country}}</td>
+            <td *ngIf="(contact.isBookmarked === true)"><div class="btn btn-info">Details</div></td>
       </tr>
     </tbody>
   </table>
+  <h1>Istrazi bolji nacin za ove ngIfove</h1>
