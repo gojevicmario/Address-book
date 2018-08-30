@@ -1,0 +1,260 @@
+[
+    {
+      "firstName": "Bray",
+      "lastName": " Oliver",
+      "address": "Bleecker Street 235",
+      "city": "Stewartville",
+      "country": "Bhutan",
+      "isBookmarked": true,
+      "Numbers": [
+        {
+          "phoneNumber": "(914) 509-2563"
+        },
+        {
+          "phoneNumber": "(999) 550-3298"
+        },
+        {
+          "phoneNumber": "(907) 498-2121"
+        }
+      ],
+      "Emails": [
+        {
+          "EmailAddress": "moodyfinley@xinware.com"
+        },
+        {
+          "EmailAddress": "caldwelllester@geologix.com"
+        },
+        {
+          "EmailAddress": "stephensgoodwin@joviold.com"
+        },
+        {
+          "EmailAddress": "doracantrell@ziggles.com"
+        },
+        {
+          "EmailAddress": "careypratt@koogle.com"
+        }
+      ],
+      "Tags": [
+        {
+          "tagName": "veniam"
+        },
+        {
+          "tagName": "cupidatat"
+        },
+        {
+          "tagName": "aliqua"
+        },
+        {
+          "tagName": "magna"
+        }
+      ]
+    },
+    {
+      "firstName": "Ella",
+      "lastName": " Shepard",
+      "address": "Duffield Street 82",
+      "city": "Goochland",
+      "country": "Aruba",
+      "isBookmarked": false,
+      "Numbers": [
+        {
+          "phoneNumber": "(869) 421-3733"
+        }
+      ],
+      "Emails": [
+        {
+          "EmailAddress": "lydiaoneil@signity.com"
+        },
+        {
+          "EmailAddress": "lesleymaldonado@xsports.com"
+        },
+        {
+          "EmailAddress": "claytonneal@obliq.com"
+        }
+      ],
+      "Tags": [
+        {
+          "tagName": "nisi"
+        },
+        {
+          "tagName": "sunt"
+        },
+        {
+          "tagName": "magna"
+        },
+        {
+          "tagName": "laboris"
+        }
+      ]
+    },
+    {
+      "firstName": "Cathleen",
+      "lastName": " Fox",
+      "address": "Pineapple Street 160",
+      "city": "Winston",
+      "country": "Niger",
+      "isBookmarked": true,
+      "Numbers": [
+        {
+          "phoneNumber": "(941) 420-2349"
+        },
+        {
+          "phoneNumber": "(977) 588-3879"
+        }
+      ],
+      "Emails": [
+        {
+          "EmailAddress": "tommiedaniels@kenegy.com"
+        },
+        {
+          "EmailAddress": "ingramodonnell@gorganic.com"
+        },
+        {
+          "EmailAddress": "melbasalazar@exodoc.com"
+        },
+        {
+          "EmailAddress": "mendozaball@emergent.com"
+        },
+        {
+          "EmailAddress": "lolacotton@danja.com"
+        }
+      ],
+      "Tags": [
+        {
+          "tagName": "do"
+        },
+        {
+          "tagName": "labore"
+        },
+        {
+          "tagName": "aute"
+        },
+        {
+          "tagName": "in"
+        },
+        {
+          "tagName": "et"
+        }
+      ]
+    },
+    {
+      "firstName": "Roxanne",
+      "lastName": " Maynard",
+      "address": "Berriman Street 238",
+      "city": "Deercroft",
+      "country": "New Zealand",
+      "isBookmarked": true,
+      "Numbers": [
+        {
+          "phoneNumber": "(989) 472-2202"
+        },
+        {
+          "phoneNumber": "(876) 549-3217"
+        }
+      ],
+      "Emails": [
+        {
+          "EmailAddress": "dudleyrandall@xymonk.com"
+        },
+        {
+          "EmailAddress": "benjaminfrederick@eclipto.com"
+        },
+        {
+          "EmailAddress": "parrishrichard@emtrac.com"
+        }
+      ],
+      "Tags": [
+        {
+          "tagName": "eiusmod"
+        }
+      ]
+    },
+    {
+      "firstName": "Jeannie",
+      "lastName": " Cote",
+      "address": "Whitwell Place 61",
+      "city": "Marysville",
+      "country": "Switzerland",
+      "isBookmarked": false,
+      "Numbers": [
+        {
+          "phoneNumber": "(848) 588-3908"
+        },
+        {
+          "phoneNumber": "(866) 571-3896"
+        }
+      ],
+      "Emails": [
+        {
+          "EmailAddress": "morenopark@gleamink.com"
+        },
+        {
+          "EmailAddress": "lesadelgado@quantasis.com"
+        },
+        {
+          "EmailAddress": "zimmermanleblanc@autograte.com"
+        },
+        {
+          "EmailAddress": "ineskey@zentix.com"
+        }
+      ],
+      "Tags": [
+        {
+          "tagName": "nulla"
+        },
+        {
+          "tagName": "proident"
+        },
+        {
+          "tagName": "consequat"
+        },
+        {
+          "tagName": "reprehenderit"
+        },
+        {
+          "tagName": "nostrud"
+        }
+      ]
+    },
+    {
+      "firstName": "Robyn",
+      "lastName": " Hansen",
+      "address": "Terrace Place 8",
+      "city": "Gouglersville",
+      "country": "Guinea",
+      "isBookmarked": true,
+      "Numbers": [
+        {
+          "phoneNumber": "(855) 435-3667"
+        },
+        {
+          "phoneNumber": "(950) 587-3786"
+        },
+        {
+          "phoneNumber": "(963) 548-3218"
+        },
+        {
+          "phoneNumber": "(881) 463-3819"
+        }
+      ],
+      "Emails": [
+        {
+          "EmailAddress": "bakermosley@bitendrex.com"
+        },
+        {
+          "EmailAddress": "hartmangreer@fishland.com"
+        },
+        {
+          "EmailAddress": "delorismartin@pulze.com"
+        },
+        {
+          "EmailAddress": "gallowaynielsen@zyple.com"
+        }
+      ],
+      "Tags": [
+        {
+          "tagName": "pariatur"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,20 @@
+[
+  '{{repeat(5, 20)}}',
+  {
+    firstName: '{{firstName()}}',
+    lastName: ' {{surname()}}',   
+    address: '{{street()}} {{integer(1, 250)}}',
+    city: '{{city()}}',
+    country: '{{country()}}',
+    isBookmarked: '{{bool()}}',
+    Numbers: ['{{repeat(1, 5)}}',{
+      phoneNumber: '{{phone("")}}'
+    }],
+    Emails: ['{{repeat(1, 5)}}',{
+      EmailAddress: '{{email([random])}}'
+    }],
+    Tags: ['{{repeat(1, 5)}}',{
+      tagName: '{{lorem(1, "words")}}'
+    }]
+  }
+]

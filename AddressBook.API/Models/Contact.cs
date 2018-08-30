@@ -5,6 +5,7 @@ namespace AddressBook.API.Models
 {
     public class Contact
     {
+        [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -12,9 +13,9 @@ namespace AddressBook.API.Models
         public string City { get; set; }
         public string Country { get; set; }
         public bool IsBookmarked { get; set; }
-        public List<Number> NumberList { get; set; }        
-        public List<Email> EmailList { get; set; }
-        public List<Tag> TagList { get; set; }
+        public List<Number> Numbers { get; set; }        
+        public List<Email> Emails { get; set; }
+        public List<Tag> Tags { get; set; }
 
     }
 }

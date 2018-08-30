@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { RouterModule, Routes, Router } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -11,6 +13,10 @@ import { NumberComponent } from 'src/app/details/number/number.component';
 import { TagComponent } from 'src/app/details/tag/tag.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
+import { appRoutes } from './routes';
+import { CreateContactComponent } from './create-contact/create-contact.component';
+
+
 
 
 @NgModule({
@@ -23,11 +29,13 @@ import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
       NumberComponent,
       TagComponent,
       ContactListComponent,
-      BookmarkListComponent
+      BookmarkListComponent,
+      CreateContactComponent
    ],
    imports: [
       BrowserModule,
-      HttpClientModule
+      HttpClientModule,
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [],
    bootstrap: [
