@@ -18,16 +18,15 @@ namespace AddressBook.Api.Controllers
             _context = context;
         }
 
-        // GET api/values
+        // GET api/contacts
         [HttpGet]
         public async Task<IActionResult> GetContacts()
         {
-            var values = await _context.Contacts.ToListAsync();
+            var target = await _context.Contacts.ToListAsync();
 
-            return Ok(values);
+            return Ok(target);
         }
 
-        
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetContact(int id)
@@ -52,6 +51,9 @@ namespace AddressBook.Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            
         }
+
+
     }
 }
