@@ -19,7 +19,7 @@
         <td>{{contact.address}}</td>
         <td>{{contact.city}}</td>
         <td>{{contact.country}}</td>
-        <td><div class="btn btn-info" [routerLink]="['/details']" >Details</div></td>
+        <td><div class="btn btn-info" [routerLink]="['/details/', contact.id]" >Details</div></td>
       </tr>
     </tbody>
   </table>

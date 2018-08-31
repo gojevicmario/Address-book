@@ -6,12 +6,12 @@ import { Observable, of } from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
 @Injectable()
-export class ContactDetailResolver implements Resolve<Contact> {
+export class ContactListResolver implements Resolve<Contact[]> {
     constructor(private contactService: ContactService,
          private router: Router) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<Contact> {
-        return this.contactService.getContact(route.params['id']).pipe(
+    resolve(route: ActivatedRouteSnapshot): Observable<Contact[]> {
+        return this.contactService.getContacts().pipe(
             catchError( error => {
                 console.log('greska');
                 this.router.navigate(['/bookmarks']);

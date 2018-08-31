@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../_models/contact';
 import { ContactService } from '../_services/contact.service';
+import { ActivatedRoute } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-contact-list',
@@ -11,18 +12,13 @@ export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadContacts();
-  }
-
-  loadContacts() {
-    this.contactService.getContacts().subscribe((contacts: Contact[]) => {
-      this.contacts = contacts;
-    }, error => {
-      alert('greska');
+    this.route.data.subscribe( data => {
+      this.contacts = data['contacts'];
     });
   }
+
 }
 
