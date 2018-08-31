@@ -1,26 +1,50 @@
 <h1>Contact-list</h1>
-<table class="table table-hover table-bordered">
-    <thead>
-      <tr>
-        <th style="width: 5%">Ordinal</th>
-        <th style="width: 16%">First name</th>
-        <th style="width: 16%">Last name</th>
-        <th style="width: 16%">Address</th>
-        <th style="width: 16%">City</th>
-        <th style="width: 16%">Country</th>
-        <th class="hidden-sm" style="width: 15%">Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let contact of contacts; let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{contact.firstName}}</td>
-        <td>{{contact.lastName}}</td>
-        <td>{{contact.address}}</td>
-        <td>{{contact.city}}</td>
-        <td>{{contact.country}}</td>
-        <td><div class="btn btn-info" [routerLink]="['/details/', contact.id]" >Details</div></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col">
+    <tabset>
+      <tab heading="Bookmarked contacts">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 10%">Ordinal</th>
+              <th style="width: 40%">First name</th>
+              <th style="width: 40%">Last name</th>
+              <th style="width: 10%">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contact of bookmarkedContacts | paginate: { itemsPerPage: 10, currentPage: p}; let i = index;">
+              <th scope="row">{{i+1}}</th>
+              <td>{{contact.firstName}}</td>
+              <td>{{contact.lastName}}</td>
+              <td><div class="btn btn-info" [routerLink]="['/details/', contact.id]" >Details</div></td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </tab>
+      <tab heading="All contacts">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 10%">Ordinal</th>
+                <th style="width: 40%">First name</th>
+                <th style="width: 40%">Last name</th>
+                <th style="width: 10%">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contact of contacts | paginate: { itemsPerPage: 10, currentPage: p}; let i = index;">
+                <th scope="row">{{i+1}}</th>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td><div class="btn btn-info" [routerLink]="['/details/', contact.id]" >Details</div></td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </tab>
+      </tabset>
+      </div>
+      </div>
 
