@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ContactService } from '../_services/contact.service';
+import { Contact } from '../_models/contact';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bookmark-list',
@@ -8,19 +11,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookmarkListComponent implements OnInit {
 
-  contacts: any;
+  contacts: Contact[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private contactService: ContactService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getValues();
-  }
-  // napravi service koristis ovo u dvije komponente
-  getValues() {
-    this.http.get('http://localhost:5000/api/Contacts').subscribe(response => {
-      this.contacts = response;
-    }, error => {
-      console.log(error);
+    this.route.data.subscribe( data => {
+      this.contacts = data['contacts'];
+      for ( const i of this.contacts) {
+        if (i.isBookmarked === true) {
+          this.contacts.splice(this.contacts.indexOf(i), 1);
+        }
+      }
     });
   }
 }

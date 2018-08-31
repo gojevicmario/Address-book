@@ -13,13 +13,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let contact of contacts; let i = index" >
-            <th *ngIf="(contact.isBookmarked === true)" scope="row">{{i+1}}</th>
-            <td *ngIf="(contact.isBookmarked === true)">{{contact.firstName}}</td>
-            <td *ngIf="(contact.isBookmarked === true)">{{contact.lastName}}</td>
-            <td *ngIf="(contact.isBookmarked === true)">{{contact.address}}</td>
-            <td *ngIf="(contact.isBookmarked === true)">{{contact.city}}</td>
-            <td *ngIf="(contact.isBookmarked === true)">{{contact.country}}</td>
-            <td *ngIf="(contact.isBookmarked === true)"><div class="btn btn-info" 
+            <th  scope="row">{{i+1}}</th>
+            <td >{{contact.firstName}}</td>
+            <td >{{contact.lastName}}</td>
+            <td >{{contact.address}}</td>
+            <td >{{contact.city}}</td>
+            <td >{{contact.country}}</td>
+            <td ><div class="btn btn-info" 
               [routerLink]="['/details/', contact.id]"  >Details</div></td>
       </tr>
     </tbody>

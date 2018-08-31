@@ -7,7 +7,8 @@ import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 import { ContactListResolver } from './_resolvers/contact-list.resolver';
 
 export const appRoutes: Routes = [
-    {path: 'bookmarks', component: BookmarkListComponent},
+    {path: 'bookmarks', component: BookmarkListComponent,
+    resolve: {contacts: ContactListResolver}},
     {path: 'all', component: ContactListComponent,
         resolve: {contacts: ContactListResolver}},
     {path: 'createContact', component: CreateContactComponent},

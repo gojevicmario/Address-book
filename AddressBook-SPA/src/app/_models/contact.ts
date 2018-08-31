@@ -5,5 +5,5 @@ export interface Contact {
     address: string;
     city: string;
     country: string;
-    isBookamrked: boolean;
+    isBookmarked: boolean;
 }

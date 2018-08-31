@@ -19,6 +19,7 @@ import { CreateContactComponent } from './create-contact/create-contact.componen
 import { ContactService } from './_services/contact.service';
 import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 import { ContactListResolver } from './_resolvers/contact-list.resolver';
+import { DetailsService } from './_services/Details.service';
 
 
 
@@ -44,6 +45,7 @@ import { ContactListResolver } from './_resolvers/contact-list.resolver';
    ],
    providers: [
        ContactService,
+       DetailsService,
        ContactDetailResolver,
        ContactListResolver
    ],

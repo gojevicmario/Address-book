@@ -4,6 +4,7 @@ using AddressBook.API.Data;
 using AddressBook.API.Dtos;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace AddressBook.API.Controllers
 {
@@ -20,12 +21,13 @@ namespace AddressBook.API.Controllers
 
         }
 
-        [HttpGet]
         public async Task<IActionResult> GetContacts()
         {
+            //bool IsBookmarked = false;
             var contacts = await _repo.GetContactsAsync();
-            var contactsToReturn = Mapper.Map<IEnumerable<ContactForListDto>>(contacts);
-            return Ok(contactsToReturn);
+            //if(IsBookmarked)
+              //  return Ok(Mapper.Map<IEnumerable<ContactForListDto>>(contacts.Where(c => c.IsBookmarked)));
+            return Ok(Mapper.Map<IEnumerable<ContactForListDto>>(contacts));
         }
 
         [HttpGet("{id}")]
