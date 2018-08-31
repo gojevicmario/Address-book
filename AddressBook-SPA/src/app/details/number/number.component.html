@@ -6,9 +6,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>059409419</td>
-      </tr>
+          <tr *ngFor="let number of numbers; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{number?.phoneNumber}}</td>
+            </tr>
     </tbody>
   </table>

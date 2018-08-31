@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { DetailsService } from '../../_services/Details.service';
 
 @Component({
   selector: 'app-email',
@@ -10,17 +12,16 @@ export class EmailComponent implements OnInit {
 
   emails: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private detailsService: DetailsService) { }
 
   ngOnInit() {
-    this.getEmails();
-  }
-
-  getEmails() {
-    this.http.get('http://localhost:5000/api/Emails/3').subscribe(response => {
+    let id;
+    this.route.params.subscribe(params => {
+      id = params['id'];
+    });
+    this.detailsService.getEmails(id).subscribe( response => {
       this.emails = response;
-    }, error => {
-      console.log(error);
     });
   }
+
 }

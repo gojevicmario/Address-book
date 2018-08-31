@@ -17,9 +17,9 @@ namespace AddressBook.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmails(int id)
+        public async Task<IActionResult> GetNumbers(int id)
         {
-            var values = await _context.Emails.Where( e => e.Id == id).ToListAsync();
+            var values = await _context.Numbers.Where(n => n.ContactId == id ).ToListAsync();
 
             return Ok(values);
         }

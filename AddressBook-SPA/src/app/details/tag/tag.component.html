@@ -6,10 +6,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Friend</td>
-      </tr>
+        <tr *ngFor="let tag of tags; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{tag?.tagName}}</td>
+          </tr>
     </tbody>
   </table>
 

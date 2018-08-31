@@ -19,7 +19,7 @@ namespace AddressBook.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetNumbers(int id)
         {
-            var values = await _context.Tags.Where( e => e.Id == id).ToListAsync();
+            var values = await _context.Tags.Where( t => t.ContactId == id).ToListAsync();
 
             return Ok(values);
         }
