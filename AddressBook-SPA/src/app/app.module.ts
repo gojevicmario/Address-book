@@ -15,6 +15,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
 import { appRoutes } from './routes';
 import { CreateContactComponent } from './create-contact/create-contact.component';
+import { ContactService } from './_services/contact.service';
 
 
 
@@ -37,7 +38,9 @@ import { CreateContactComponent } from './create-contact/create-contact.componen
       HttpClientModule,
       RouterModule.forRoot(appRoutes)
    ],
-   providers: [],
+   providers: [
+       ContactService
+   ],
    bootstrap: [
       AppComponent
    ]

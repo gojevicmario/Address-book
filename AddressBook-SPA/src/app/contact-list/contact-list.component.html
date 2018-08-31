@@ -8,7 +8,7 @@
         <th style="width: 16%">Address</th>
         <th style="width: 16%">City</th>
         <th style="width: 16%">Country</th>
-        <th style="width: 15%">Details</th>
+        <th class="hidden-sm" style="width: 15%">Details</th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +19,8 @@
         <td>{{contact.address}}</td>
         <td>{{contact.city}}</td>
         <td>{{contact.country}}</td>
-        <td><div class="btn btn-info">Details</div></td>
+        <td><div class="btn btn-info" [routerLink]="['/details']" >Details</div></td>
       </tr>
     </tbody>
   </table>
+

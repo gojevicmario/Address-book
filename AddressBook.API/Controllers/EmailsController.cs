@@ -16,13 +16,15 @@ namespace AddressBook.API.Controllers
             _context = context;
         }
 
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmails(int id)
         {
-            var values = await _context.Emails.Where( e => e.Id == id).ToListAsync();
+            var values = await _context.Emails.Where( e => e.ContactId == id).ToListAsync();
 
             return Ok(values);
         }
+        
 
     }
 }

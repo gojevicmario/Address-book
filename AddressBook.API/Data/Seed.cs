@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AddressBook.API.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace AddressBook.API.Data

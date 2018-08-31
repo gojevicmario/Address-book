@@ -17,7 +17,7 @@ export class EmailComponent implements OnInit {
   }
 
   getEmails() {
-    this.http.get('http://localhost:5000/api/Emails/1').subscribe(response => {
+    this.http.get('http://localhost:5000/api/Emails/3').subscribe(response => {
       this.emails = response;
     }, error => {
       console.log(error);

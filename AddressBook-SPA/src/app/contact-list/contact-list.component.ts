@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Contact } from '../_models/contact';
+import { ContactService } from '../_services/contact.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -8,19 +9,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactListComponent implements OnInit {
 
-  contacts: any;
+  contacts: Contact[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private contactService: ContactService) { }
 
   ngOnInit() {
-    this.getValues();
+    this.loadContacts();
   }
-  // napravi service koristis ovo u dvije komponente
-  getValues() {
-    this.http.get('http://localhost:5000/api/Contacts').subscribe(response => {
-      this.contacts = response;
+
+  loadContacts() {
+    this.contactService.getContacts().subscribe((contacts: Contact[]) => {
+      this.contacts = contacts;
     }, error => {
-      console.log(error);
+      alert('greska');
     });
   }
 }
+
