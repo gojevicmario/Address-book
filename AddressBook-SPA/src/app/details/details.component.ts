@@ -17,14 +17,16 @@ export class DetailsComponent implements OnInit {
   constructor(private contactService: ContactService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadUser();
-  }
-
-  loadUser() {
-    this.contactService.getContact(+this.route.snapshot.params['id']).subscribe((contact: Contact) => {
-      this.contact = contact;
-    }, error => {
-      alert(error);
+    this.route.data.subscribe(data => {
+      this.contact = data['contact'];
     });
   }
+
+  // loadUser() {
+  //  this.contactService.getContact(+this.route.snapshot.params['id']).subscribe((contact: Contact) => {
+  //    this.contact = contact;
+  //  }, error => {
+  //    alert(error);
+  //  });
+  // }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import { RouterModule, Routes, Router } from '@angular/router';
 
 
@@ -16,6 +17,7 @@ import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
 import { appRoutes } from './routes';
 import { CreateContactComponent } from './create-contact/create-contact.component';
 import { ContactService } from './_services/contact.service';
+import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 
 
 
@@ -36,10 +38,12 @@ import { ContactService } from './_services/contact.service';
    imports: [
       BrowserModule,
       HttpClientModule,
+      TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes)
    ],
    providers: [
-       ContactService
+       ContactService,
+       ContactDetailResolver
    ],
    bootstrap: [
       AppComponent
