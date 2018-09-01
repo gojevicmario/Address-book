@@ -33,6 +33,7 @@ namespace AddressBook.Api
             services.AddCors();
             services.AddAutoMapper();
             services.AddTransient<Seed>();
+            services.AddTransient<EmailRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
         }
 
@@ -49,7 +50,7 @@ namespace AddressBook.Api
             }
 
             //app.UseHttpsRedirection();
-            seeder.SeedContacts();
+            //seeder.SeedContacts();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }
