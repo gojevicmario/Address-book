@@ -34,6 +34,8 @@ namespace AddressBook.Api
             services.AddAutoMapper();
             services.AddTransient<Seed>();
             services.AddTransient<EmailRepository>();
+            services.AddTransient<TagRepository>();
+            services.AddTransient<NumberRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
         }
 

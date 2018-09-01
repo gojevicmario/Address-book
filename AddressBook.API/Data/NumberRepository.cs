@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AddressBook.API.Data
 {
-    public class EmailRepository 
+    public class NumberRepository
     {
         private readonly DataContext _context;
-        public EmailRepository(DataContext context)
+        public NumberRepository(DataContext context)
         {
             _context = context;
 
@@ -24,16 +24,16 @@ namespace AddressBook.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<Email> GetEmail(int FkId, int PkId)
+        public async Task<Number> GetNumber(int FkId, int PkId)
         {
-            var email = await _context.Emails.Where( e => e.ContactId == FkId).FirstOrDefaultAsync( e => e.Id == PkId);
-            return email;
+            var Number = await _context.Numbers.Where( e => e.ContactId == FkId).FirstOrDefaultAsync( e => e.Id == PkId);
+            return Number;
         }
 
-        public async Task<IEnumerable<Email>> GetEmails(int FkId)
+        public async Task<IEnumerable<Number>> GetNumbers(int FkId)
         {
-            var emails = await _context.Emails.Where( e => e.ContactId == FkId).ToListAsync();
-            return emails;
+            var Numbers = await _context.Numbers.Where( e => e.ContactId == FkId).ToListAsync();
+            return Numbers;
         }
 
         public async Task<bool> SaveAll()

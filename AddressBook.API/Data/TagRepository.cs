@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AddressBook.API.Data
 {
-    public class EmailRepository 
+    public class TagRepository
     {
         private readonly DataContext _context;
-        public EmailRepository(DataContext context)
+        public TagRepository(DataContext context)
         {
             _context = context;
 
@@ -24,16 +24,16 @@ namespace AddressBook.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<Email> GetEmail(int FkId, int PkId)
+        public async Task<Tag> GetTag(int FkId, int PkId)
         {
-            var email = await _context.Emails.Where( e => e.ContactId == FkId).FirstOrDefaultAsync( e => e.Id == PkId);
-            return email;
+            var Tag = await _context.Tags.Where( e => e.ContactId == FkId).FirstOrDefaultAsync( e => e.Id == PkId);
+            return Tag;
         }
 
-        public async Task<IEnumerable<Email>> GetEmails(int FkId)
+        public async Task<IEnumerable<Tag>> GetTags(int FkId)
         {
-            var emails = await _context.Emails.Where( e => e.ContactId == FkId).ToListAsync();
-            return emails;
+            var Tags = await _context.Tags.Where( e => e.ContactId == FkId).ToListAsync();
+            return Tags;
         }
 
         public async Task<bool> SaveAll()

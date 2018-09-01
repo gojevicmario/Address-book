@@ -23,34 +23,32 @@ namespace AddressBook.API.Controllers
         [HttpGet("{contactId}/{emailId}")]
         public async Task<IActionResult> GetEmail(int contactId, int emailId)
         {
-            var email = await _repo.GetDetail(contactId, emailId);
+            var email = await _repo.GetEmail(contactId, emailId);
             return Ok(email);
         }
 
         [HttpGet("{contactId}")]
         public async Task<IActionResult> GetEmails(int contactId)
         {
-            var emails = await _repo.GetDetailsAsync(contactId);
+            var emails = await _repo.GetEmails(contactId);
             return Ok(emails);
         }
 
         [HttpDelete("{contactId}/{emailId}")]
         public async Task<IActionResult> DeleteEmail(int contactId, int emailId)
         {
-            _repo.Delete(await _repo.GetDetail(contactId, emailId));
+            _repo.Delete(await _repo.GetEmail(contactId, emailId));
             await _repo.SaveAll();
             return Ok();
         }
 
         [HttpPut("{contactId}/{emailId}")]
-        public async Task<IActionResult> UpdateContact(int contactId, int emailId, EmailForUpdateDto emailForUpdateDto){
-            var email = await _repo.GetDetail(contactId,emailId);
-            email.EmailAddress = emailForUpdateDto.EmailAddress;
+        public async Task<IActionResult> UpdateContact(int contactId, int emailId, DetailInfoForUpdateDto emailForUpdateDto){
+            var email = await _repo.GetEmail(contactId,emailId);
+            email.EmailAddress = emailForUpdateDto.emailAddress;
             if(await _repo.SaveAll())
                 return NoContent();
             throw new Exception($"Updating Email with {contactId} failed on save");
         }
-
-
     }
 }
