@@ -48,5 +48,12 @@ namespace AddressBook.API.Controllers
             throw new Exception($"Updating contact with {id} failed on save");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteContact(int id){
+            _repo.Delete(await _repo.GetContact(id));
+            await _repo.SaveAll();
+            return Ok();
+        }
+
     }
 }

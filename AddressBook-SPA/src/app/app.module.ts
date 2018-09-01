@@ -25,6 +25,8 @@ import { ContactListResolver } from './_resolvers/contact-list.resolver';
 import { DetailsService } from './_services/Details.service';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { BookmarkedContactsPipe } from './_pipes/bookmarked-contacts.pipe';
+
 
 
 
@@ -44,6 +46,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
       JwPaginationComponent,
       ContactEditComponent,
       ContactEditComponent,
+      BookmarkedContactsPipe
    ],
    imports: [
       BrowserModule,

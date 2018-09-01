@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../_models/contact';
 import { ContactService } from '../_services/contact.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
+
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
-  bookmarkedContacts: Contact[];
 
-
-  constructor(private contactService: ContactService, private route: ActivatedRoute) { }
+  constructor(private contactService: ContactService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe( data => {
       this.contacts = data['contacts'];
     });
-    this.bookmarkedContacts = this.contacts.slice(0);
-    this.showOnlyBookmarked();
   }
 
-  private showOnlyBookmarked() {
-    for ( const i of this.bookmarkedContacts) {
-      if (i.isBookmarked === true) {
-        this.bookmarkedContacts.splice(this.bookmarkedContacts.indexOf(i), 1);
-      }
-    }
-  }
 
+
+  deleteContact(id) {
+    this.contactService.deleteContact(id).subscribe(next => {
+     this.contacts.splice(this.contacts.findIndex( c => c.id === id), 1 );
+    }, error => {
+      console.log(error);
+    });
+  }
 
 }
 
