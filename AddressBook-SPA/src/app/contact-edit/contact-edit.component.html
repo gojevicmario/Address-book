@@ -52,7 +52,17 @@
         <div class="tab-panel">
             <tabset>
                 <tab heading="Emails">
-                    <app-email></app-email>
+                    <div *ngFor="let email of emails; let i = index;" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <form #editDetailsForm="ngForm" (ngSubmit)="updateEmails(email.id,i)">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="m-auto col-md-2">{{i+1}}</h5>
+                                <input name="emailAddress{{i}}" class="col-md-6 form-control list-group-item list-group-item-action" [(ngModel)]="emails[i].emailAddress">
+                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success">Save</button>
+                                <button class="col-md-2 btn btn-danger"  (click)="deleteEmail(email.id,i)">Delete</button>
+                            </div>
+                        
+                        </form>
+                    </div>
                 </tab>
                 <tab heading="Numbers">
                     <app-number></app-number>

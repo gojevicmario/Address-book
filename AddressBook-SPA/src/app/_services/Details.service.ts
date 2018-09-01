@@ -11,13 +11,16 @@ import { Contact } from '../_models/contact';
   providedIn: 'root'
 })
 export class DetailsService {
+  baseUrl = environment.apiUrl;
 
-baseUrl = environment.apiUrl;
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getEmails(id): Observable<Email[]> {
     return this.http.get<Email[]>(this.baseUrl + 'emails/' + id);
+  }
+
+  getEmail(fkId: number, pkId: number): Observable<Email> {
+    return this.http.get<Email>(this.baseUrl + `emails/${fkId}/${pkId}`);
   }
 
   getNumbers(id): Observable<Number[]> {
@@ -26,5 +29,13 @@ baseUrl = environment.apiUrl;
 
   getTags(id): Observable<Tag[]> {
     return this.http.get<Tag[]>(this.baseUrl + 'tags/' + id);
+  }
+
+  updateEmails(fkId: number, pkId: number, email: Email) {
+    return this.http.put(this.baseUrl + `emails/${fkId}/${pkId}`, email);
+  }
+
+  deleteEmail(fkId: number, pkId: number) {
+    return this.http.delete(this.baseUrl + `emails/${fkId}/${pkId}`);
   }
 }

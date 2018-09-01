@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import { RouterModule, Routes, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -26,6 +26,8 @@ import { DetailsService } from './_services/Details.service';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { BookmarkedContactsPipe } from './_pipes/bookmarked-contacts.pipe';
+import { ContactEditResolver } from './_resolvers/contact-edit.resolver';
+import { SafeStylePipe } from './_pipes/safeStyle.pipe';
 
 
 
@@ -46,7 +48,8 @@ import { BookmarkedContactsPipe } from './_pipes/bookmarked-contacts.pipe';
       JwPaginationComponent,
       ContactEditComponent,
       ContactEditComponent,
-      BookmarkedContactsPipe
+      BookmarkedContactsPipe,
+      SafeStylePipe
    ],
    imports: [
       BrowserModule,
@@ -54,12 +57,14 @@ import { BookmarkedContactsPipe } from './_pipes/bookmarked-contacts.pipe';
       HttpClientModule,
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
-      NgxPaginationModule
+      NgxPaginationModule,
+      ReactiveFormsModule
    ],
    providers: [
        ContactService,
        DetailsService,
        ContactDetailResolver,
+       ContactEditResolver,
        ContactListResolver,
        PreventUnsavedChanges
    ],
