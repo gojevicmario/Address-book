@@ -13,15 +13,12 @@ export class ContactListComponent implements OnInit {
   contacts: Contact[];
   bookmarkedContacts: Contact[];
 
-  items: Array<any>;
-  pageOfItems: Array<any>;
 
   constructor(private contactService: ContactService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe( data => {
       this.contacts = data['contacts'];
-      this.items = data['contacts'];
     });
     this.bookmarkedContacts = this.contacts.slice(0);
     this.showOnlyBookmarked();
@@ -35,9 +32,6 @@ export class ContactListComponent implements OnInit {
     }
   }
 
-  onChangePage(pageOfItems: Array<any>) {
-    this.pageOfItems = pageOfItems;
-  }
 
 }
 

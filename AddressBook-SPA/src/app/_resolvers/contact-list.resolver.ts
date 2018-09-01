@@ -14,7 +14,7 @@ export class ContactListResolver implements Resolve<Contact[]> {
         return this.contactService.getContacts().pipe(
             catchError( error => {
                 console.log('greska');
-                this.router.navigate(['/bookmarks']);
+                this.router.navigate(['/contacts']);
                 return of(null);
             })
         );

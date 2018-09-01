@@ -5,6 +5,7 @@ using AddressBook.API.Dtos;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System;
 
 namespace AddressBook.API.Controllers
 {
@@ -36,6 +37,15 @@ namespace AddressBook.API.Controllers
             var contact = await _repo.GetContact(id);
             var contactToReturn = _mapper.Map<ContactForListDto>(contact);
             return Ok(contactToReturn);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateContact(int id, ContactForUpdateDto ContactForUpdateDto){
+            var contactFromRepo = await _repo.GetContact(id);
+            _mapper.Map(ContactForUpdateDto, contactFromRepo);
+            if(await _repo.SaveAll())
+                return NoContent();
+            throw new Exception($"Updating contact with {id} failed on save");
         }
 
     }

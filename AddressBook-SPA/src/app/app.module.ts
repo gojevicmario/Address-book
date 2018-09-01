@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule, TabsModule} from 'ngx-bootstrap';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,6 +23,9 @@ import { ContactService } from './_services/contact.service';
 import { ContactDetailResolver } from './_resolvers/contact-detail.resolver';
 import { ContactListResolver } from './_resolvers/contact-list.resolver';
 import { DetailsService } from './_services/Details.service';
+import { ContactEditComponent } from './contact-edit/contact-edit.component';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+
 
 
 
@@ -37,10 +41,13 @@ import { DetailsService } from './_services/Details.service';
       TagComponent,
       ContactListComponent,
       CreateContactComponent,
-      JwPaginationComponent
+      JwPaginationComponent,
+      ContactEditComponent,
+      ContactEditComponent,
    ],
    imports: [
       BrowserModule,
+      FormsModule,
       HttpClientModule,
       TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
@@ -50,7 +57,8 @@ import { DetailsService } from './_services/Details.service';
        ContactService,
        DetailsService,
        ContactDetailResolver,
-       ContactListResolver
+       ContactListResolver,
+       PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent

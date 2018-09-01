@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Email } from '../_models/email';
 import { Number } from '../_models/number';
 import { Tag } from '../_models/tag';
+import { Contact } from '../_models/contact';
 
 @Injectable({
   providedIn: 'root'

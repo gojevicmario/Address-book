@@ -1,4 +1,5 @@
 <h1>Contact-list</h1>
+<h3>Ma moze se i ovo pametniej rjesit 100%</h3>
 <div class="row">
   <div class="col">
     <tabset>
@@ -9,7 +10,7 @@
               <th style="width: 10%">Ordinal</th>
               <th style="width: 40%">First name</th>
               <th style="width: 40%">Last name</th>
-              <th style="width: 10%">Details</th>
+              <th style="width: 10%" colspan="3">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -17,7 +18,9 @@
               <th scope="row">{{i+1}}</th>
               <td>{{contact.firstName}}</td>
               <td>{{contact.lastName}}</td>
-              <td><div class="btn btn-info" [routerLink]="['/details/', contact.id]" >Details</div></td>
+              <td> <div class="btn btn-block btn-primary" [routerLink]="['/contacts/details/', contact.id]" >Details</div> </td>
+              <td><div class="btn btn-block btn-warning" [routerLink]="['/contacts/edit/', contact.id]" >Edit</div></td>
+              <td><div class="btn btn-block btn-danger" [routerLink]="['/contacts/delete/', contact.id]" >Delete</div></td>
             </tr>
           </tbody>
         </table>

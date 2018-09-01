@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col m-auto">
+                <h4>
+                    Edit {{contact.firstName}} {{contact.lastName}}
+                </h4>
+            </div>
+            <div *ngIf="editForm.dirty" class="alert alert-info mx-3 my-auto col">
+                <strong>Napravil si promjene buraz</strong>
+            </div>
+        </div>
+        <form #editForm="ngForm" #editContactForm id="editContactForm" (ngSubmit)="updateContact()">
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="m-auto col-md-4">First name</h5>
+                    <input name="firstName" class="col-md-8 form-control list-group-item list-group-item-action" [(ngModel)]="contact.firstName">
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="m-auto col-md-4">Last name</h5>
+                    <input name="lastName" [(ngModel)]="contact.lastName" class="col-md-8 form-control list-group-item list-group-item-action">
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="m-auto col-md-4">Address</h5>
+                    <input name="address" [(ngModel)]="contact.address" class="col-md-8 form-control list-group-item list-group-item-action">
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="m-auto col-md-4">City</h5>
+                    <input name="city" [(ngModel)]="contact.city" class="col-md-8 form-control list-group-item list-group-item-action">
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="m-auto col-md-4">Country</h5>
+                    <input name="country" [(ngModel)]="contact.country" class="col-md-8 form-control list-group-item list-group-item-action">
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <button [disabled]="!editForm.dirty" form="editContactForm" class="btn btn-success col-md-6">Save</button>
+            <button class="btn btn-danger col-md-6 ">Cancel</button>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="tab-panel">
+            <tabset>
+                <tab heading="Emails">
+                    <app-email></app-email>
+                </tab>
+                <tab heading="Numbers">
+                    <app-number></app-number>
+                </tab>
+                <tab heading="Tags">
+                    <app-tag></app-tag>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

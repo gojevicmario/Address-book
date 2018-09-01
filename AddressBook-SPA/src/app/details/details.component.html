@@ -1,14 +1,31 @@
 <div class="row">
-    <div class="col">
+    <div class="col-md-6">
+        <h2>Details of {{contact.firstName}} {{contact.lastName}}</h2>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action">
+                <b>First name </b> {{contact.firstName}}</li>
+            <li class="list-group-item list-group-item-action">
+                <b>Last name: </b>{{contact.lastName }} </li>
+            <li class="list-group-item list-group-item-action">
+                <b>Address: </b> {{contact.address}}</li>
+            <li class="list-group-item list-group-item-action">
+                <b>City: </b> {{contact.city}}</li>
+            <li class="list-group-item list-group-item-action">
+                <b>Country: </b> {{contact.country}} </li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-6">
         <div class="tab-panel">
             <tabset>
-                <tab heading="{{contact.firstName}}'s emails">
+                <tab heading="Emails">
                     <app-email></app-email>
                 </tab>
-                <tab heading="{{contact.firstName}}'s numbers">
+                <tab heading="Numbers">
                     <app-number></app-number>
                 </tab>
-                <tab heading="{{contact.firstName}}'s tags">
+                <tab heading="Tags">
                     <app-tag></app-tag>
                 </tab>
             </tabset>

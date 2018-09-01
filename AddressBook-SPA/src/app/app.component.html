@@ -2,8 +2,11 @@
 <div class="container-fluid">
     <app-nav></app-nav>
     <div class="container" style="margin-top: 2rem;">
-        <!-- <app-bookmark-list></app-bookmark-list> -->
         <router-outlet></router-outlet>
-        <!-- <app-details></app-details> -->
+        <ul class="list-group mx-auto" style="max-width: 50%; margin: 3rem 0rem;">
+            <li class="list-group-item list-group-item-danger">Known bugs</li>
+            <li class="list-group-item list-group-item-action">Confirm on save activates guard</li>
+
+        </ul>
     </div>
 </div>

@@ -9,6 +9,7 @@ namespace AddressBook.API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<ContactForListDto, Contact>();
+            CreateMap<ContactForUpdateDto, Contact>();
         }
     }
 }
