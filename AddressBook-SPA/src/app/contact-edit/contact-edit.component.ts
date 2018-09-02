@@ -38,11 +38,14 @@ export class ContactEditComponent implements OnInit {
   }
 
   updateContact() {
-    this.contactService
-      .updateContact(this.contact.id, this.contact)
-      .subscribe(error => {
+    this.contactService.updateContact(this.contact.id, this.contact).subscribe(
+      next => {
+        this.router.navigateByUrl('/contacts');
+      },
+      error => {
         console.log(error);
-      });
+      }
+    );
   }
   updateEmail(pkId: number, index: number) {
     const email = this.detailsService

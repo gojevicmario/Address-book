@@ -41,6 +41,13 @@
                     <input name="country" [(ngModel)]="contact.country" class="col-md-8 form-control list-group-item list-group-item-action">
                 </div>
             </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="m-auto col-md-4">Bookmarked</h5>
+                    <input name="isBookmarked" type="checkbox" [(ngModel)]="contact.isBookmarked" class="col-md-8 form-control list-group-item list-group-item-action switch">
+                    
+                </div>
+            </div>
         </form>
         <div class="row">
             <button [disabled]="!editForm.dirty" form="editContactForm" class="btn btn-success col-md-6">Save</button>
