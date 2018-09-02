@@ -8,7 +8,7 @@ import { DetailsService } from '../_services/Details.service';
 import { Email } from '../_models/email';
 
 @Injectable()
-export class ContactEditResolver implements Resolve<Email[]> {
+export class ContactEditEmailResolver implements Resolve<Email[]> {
   constructor(
     private router: Router,
     private detailService: DetailsService

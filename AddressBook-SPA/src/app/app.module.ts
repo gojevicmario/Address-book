@@ -26,8 +26,10 @@ import { DetailsService } from './_services/Details.service';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { BookmarkedContactsPipe } from './_pipes/bookmarked-contacts.pipe';
-import { ContactEditResolver } from './_resolvers/contact-edit.resolver';
+import { ContactEditEmailResolver } from './_resolvers/contact-edit-email.resolver';
 import { SafeStylePipe } from './_pipes/safeStyle.pipe';
+import { ContactEditNumberResolver } from './_resolvers/contact-edit-number.resolver';
+import { ContactEditTagResolver } from './_resolvers/contact-edit-tag.resolver';
 
 
 
@@ -64,7 +66,9 @@ import { SafeStylePipe } from './_pipes/safeStyle.pipe';
        ContactService,
        DetailsService,
        ContactDetailResolver,
-       ContactEditResolver,
+       ContactEditEmailResolver,
+       ContactEditNumberResolver,
+       ContactEditTagResolver,
        ContactListResolver,
        PreventUnsavedChanges
    ],
