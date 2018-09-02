@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System;
+using AddressBook.API.Models;
 
 namespace AddressBook.API.Controllers
 {
@@ -29,6 +30,15 @@ namespace AddressBook.API.Controllers
             //if(IsBookmarked)
               //  return Ok(Mapper.Map<IEnumerable<ContactForListDto>>(contacts.Where(c => c.IsBookmarked)));
             return Ok(Mapper.Map<IEnumerable<ContactForListDto>>(contacts));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateContact(ContactForUpdateDto newContact){
+            Contact contact = new Contact();
+            _mapper.Map(newContact, contact);
+            _repo.Add(contact);
+            await _repo.SaveAll();
+            return Ok();
         }
 
         [HttpGet("{id}")]

@@ -1,3 +1,48 @@
-<p>
-  create-contact works!
-</p>
+<div class="row justify-content-center">
+  <form [formGroup]="createContactForm" (ngSubmit)="create()" class="col-md-8">
+    <div class="form-group">
+      <input formControlName="firstName" [ngClass]="{'is-invalid': createContactForm.get('firstName').errors
+      && createContactForm.get('firstName').touched}" class="form-control" placeholder="First name">
+      <div class="invalid-feedback">
+        First name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" [ngClass]="{'is-invalid': createContactForm.get('lastName').errors
+      && createContactForm.get('lastName').touched}" formControlName="lastName" class="form-control" placeholder="Last name">
+      <div class="invalid-feedback">
+        Last name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" [ngClass]="{'is-invalid': createContactForm.get('address').errors
+      && createContactForm.get('address').touched}" formControlName="address" class="form-control" placeholder="address">
+      <div class="invalid-feedback">
+        Address is required
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" [ngClass]="{'is-invalid': createContactForm.get('city').errors
+      && createContactForm.get('city').touched}" formControlName="city" class="form-control" placeholder="city">
+      <div class="invalid-feedback">
+        City is required
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" [ngClass]="{'is-invalid': createContactForm.get('country').errors
+      && createContactForm.get('country').touched}" formControlName="country" class="form-control" placeholder="country">
+      <div class="invalid-feedback">
+        Country is required
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="isBookmarked" class="col-sm-2 col-form-label">Bookmarked</label>
+      <input formControlName="isBookmarked" type="checkbox" class="col-sm-10 form-control">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="col-md-4 btn btn-success my-3 mx-auto">Save</button>
+    </div>
+  </form>
+</div>
+<p>{{createContactForm.value | json }}</p>
+<p>{{createContactForm.status | json }}</p>

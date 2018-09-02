@@ -10,7 +10,7 @@ import { Contact } from '../_models/contact';
 export class ContactService {
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.baseUrl + 'contacts');
@@ -20,6 +20,7 @@ export class ContactService {
     return this.http.get<Contact>(this.baseUrl + 'contacts/' + id);
   }
 
+
   updateContact(id: number, contact: Contact) {
     return this.http.put(this.baseUrl + 'contacts/' + id, contact);
   }
@@ -28,4 +29,7 @@ export class ContactService {
     return this.http.delete(this.baseUrl + 'contacts/' + id);
   }
 
+  createContact(contact: Contact) {
+    return this.http.post(this.baseUrl + 'contacts/', contact);
+  }
 }
