@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AddressBook.API.Helpers;
 using AddressBook.API.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace AddressBook.API.Data
 {
@@ -32,8 +35,19 @@ namespace AddressBook.API.Data
 
         public async Task<PagedList<Contact>> GetContacts(UserParams userParams)
         {
-            var contacts = _context.Contacts;
+            var contacts = _context.Contacts.AsQueryable();
+            if (userParams.IsBookmarked)
+                contacts = _context.Contacts.Where(c => c.IsBookmarked);
+            else if (!string.IsNullOrEmpty(userParams.FirstName))
+                contacts = _context.Contacts.Where(c => string.Equals(c.FirstName, userParams.FirstName, StringComparison.OrdinalIgnoreCase));
+            else if (!string.IsNullOrEmpty(userParams.LastName))
+                contacts = _context.Contacts.Where(c => string.Equals(c.LastName, userParams.LastName, StringComparison.OrdinalIgnoreCase));
+            else if (!string.IsNullOrEmpty(userParams.Tag)){
+                
+                var idList = _context.Tags.Where(t => string.Equals(t.TagName, userParams.Tag, StringComparison.OrdinalIgnoreCase)).Select( t => t.ContactId);
+                contacts = _context.Contacts.Where( c => idList.Contains(c.Id) );
 
+            }
             return await PagedList<Contact>.CreateAsync(contacts, userParams.PageNumber, userParams.PageSize);
         }
 

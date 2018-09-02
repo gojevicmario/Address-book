@@ -26,7 +26,6 @@ namespace AddressBook.API.Controllers
 
         public async Task<IActionResult> GetContacts([FromQuery]UserParams userParams)
         {
-
             var contacts = await _repo.GetContacts(userParams);
             var contactsToReturn = Mapper.Map<IEnumerable<ContactForListDto>>(contacts);
             Response.AddPagination(contacts.Currentpage, contacts.PageSize, contacts.TotalCount, contacts.TotalPages);

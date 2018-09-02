@@ -45,7 +45,7 @@ namespace AddressBook.API.Controllers
             var Tags = await _repo.GetTags(contactId);
             return Ok(Tags);
         }
-
+        
         [HttpDelete("{contactId}/{tagId}")]
         public async Task<IActionResult> DeleteTag(int contactId, int tagId)
         {
