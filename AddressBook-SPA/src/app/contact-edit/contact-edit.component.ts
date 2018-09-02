@@ -7,6 +7,7 @@ import { Email } from '../_models/email';
 import { Tag } from '../_models/tag';
 import { Number } from '../_models/number';
 import { DetailsService } from '../_services/Details.service';
+import { EmailComponent } from '../details/email/email.component';
 
 @Component({
   selector: 'app-contact-edit',
@@ -20,6 +21,10 @@ export class ContactEditComponent implements OnInit {
   emails: Email[];
   numbers: Number[];
   tags: Tag[];
+
+  newEmail: Email = { id: null, emailAddress: '' };
+  newNumber: Number = { id: null, phoneNumber: '' };
+  newTag: Tag = { id: null, tagName: '' };
 
   constructor(
     private contactService: ContactService,
@@ -37,10 +42,49 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
+  createEmail() {
+    this.detailsService.createEmail(this.contact.id, this.newEmail).subscribe(
+      next => {
+        this.detailsService.getEmails(this.contact.id).subscribe(data => {
+          this.emails = data;
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  createTag() {
+    this.detailsService.createTag(this.contact.id, this.newTag).subscribe(
+      next => {
+        this.detailsService.getTags(this.contact.id).subscribe(data => {
+          this.tags = data;
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  createNumber() {
+    this.detailsService.createNumber(this.contact.id, this.newNumber).subscribe(
+      next => {
+        this.detailsService.getNumbers(this.contact.id).subscribe(data => {
+          this.numbers = data;
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   updateContact() {
     this.contactService.updateContact(this.contact.id, this.contact).subscribe(
       next => {
-        this.router.navigateByUrl('/contacts');
+        this.contactService.getContact(this.contact.id).subscribe(data => {
+          this.contact = data;
+        });
       },
       error => {
         console.log(error);

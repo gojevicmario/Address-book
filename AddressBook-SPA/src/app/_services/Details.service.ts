@@ -15,6 +15,18 @@ export class DetailsService {
 
   constructor(private http: HttpClient) {}
 
+  createEmail(id: number, email: Email) {
+    return this.http.post(this.baseUrl + `emails/${id}` , email);
+  }
+
+  createNumber(id: number, number: Number) {
+    return this.http.post(this.baseUrl + `numbers/${id}` , number);
+  }
+
+  createTag(id: number, tag: Tag) {
+    return this.http.post(this.baseUrl + `tags/${id}` , tag);
+  }
+
   getEmails(id): Observable<Email[]> {
     return this.http.get<Email[]>(this.baseUrl + 'emails/' + id);
   }
@@ -62,6 +74,4 @@ export class DetailsService {
   deleteTag(fkId: number, pkId: number) {
     return this.http.delete(this.baseUrl + `tags/${fkId}/${pkId}`);
   }
-
-
 }

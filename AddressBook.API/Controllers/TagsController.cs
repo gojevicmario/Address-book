@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AddressBook.API.Data;
 using AddressBook.API.Dtos;
+using AddressBook.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,16 @@ namespace AddressBook.API.Controllers
             _repo = repo;
         }
 
+        [HttpPost("{contactId}")]
+        public async Task<IActionResult> CreateTag(int contactId, DetailInfoForUpdateDto details)
+        {
+            Tag tag = new Tag();
+            tag.TagName = details.tagName;
+            tag.ContactId = contactId;
+            _repo.Add(tag);
+            await _repo.SaveAll();
+            return Ok();
+        }
 
         [HttpGet("{contactId}/{tagId}")]
         public async Task<IActionResult> GetTag(int contactId, int tagId)

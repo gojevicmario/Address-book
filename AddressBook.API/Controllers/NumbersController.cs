@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AddressBook.API.Data;
 using AddressBook.API.Dtos;
+using AddressBook.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,16 @@ namespace AddressBook.API.Controllers
             _repo = repo;
         }
 
+        [HttpPost("{contactId}")]
+        public async Task<IActionResult> CreateNumber(int contactId, DetailInfoForUpdateDto details)
+        {
+            Number number = new Number();
+            number.PhoneNumber = details.PhoneNumber;
+            number.ContactId = contactId;
+            _repo.Add(number);
+            await _repo.SaveAll();
+            return Ok();
+        }
 
         [HttpGet("{contactId}/{numberId}")]
         public async Task<IActionResult> GetNumber(int contactId, int numberId)

@@ -45,13 +45,13 @@
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="m-auto col-md-4">Bookmarked</h5>
                     <input name="isBookmarked" type="checkbox" [(ngModel)]="contact.isBookmarked" class="col-md-8 form-control list-group-item list-group-item-action switch">
-                    
+
                 </div>
             </div>
         </form>
         <div class="row">
             <button [disabled]="!editForm.dirty" form="editContactForm" class="btn btn-success col-md-6">Save</button>
-            <button class="btn btn-danger col-md-6 ">Cancel</button>
+            <button class="btn btn-danger col-md-6">Cancel</button>
         </div>
     </div>
 
@@ -69,6 +69,13 @@
                             </div>
                         </form>
                     </div>
+                    <form #editEmailDetails="ngForm" (ngSubmit)="createEmail()" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100">
+                            <h5 class="m-auto col-md-2">{{emails.length+1}}</h5>
+                            <input type="text" name="newEmail" [(ngModel)]="newEmail.emailAddress" class="col-md-6 form-control list-group-item list-group-item-action">
+                            <button type="submit" [disabled]="!editEmailDetails.dirty" class="col-md-4 btn btn-success">Add</button>
+                        </div>
+                    </form>
                 </tab>
                 <tab heading="Numbers">
                     <div *ngFor="let number of numbers; let i = index;" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -81,6 +88,13 @@
                             </div>
                         </form>
                     </div>
+                    <form #editNumberDetails="ngForm" (ngSubmit)="createNumber()" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100">
+                            <h5 class="m-auto col-md-2">{{numbers.length+1}}</h5>
+                            <input type="text" name="newNumber" [(ngModel)]="newNumber.phoneNumber" class="col-md-6 form-control list-group-item list-group-item-action">
+                            <button type="submit" [disabled]="!editNumberDetails.dirty" class="col-md-4 btn btn-success">Add</button>
+                        </div>
+                    </form>
                 </tab>
                 <tab heading="Tags">
                     <div *ngFor="let tag of tags; let i = index;" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -93,6 +107,13 @@
                             </div>
                         </form>
                     </div>
+                    <form #editTagDetails="ngForm" (ngSubmit)="createTag()" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100">
+                            <h5 class="m-auto col-md-2">{{tags.length+1}}</h5>
+                            <input type="text" name="newTag" [(ngModel)]="newTag.tagName" class="col-md-6 form-control list-group-item list-group-item-action">
+                            <button type="submit" [disabled]="!editTagDetails.dirty" class="col-md-4 btn btn-success">Add</button>
+                        </div>
+                    </form>
                 </tab>
             </tabset>
         </div>
