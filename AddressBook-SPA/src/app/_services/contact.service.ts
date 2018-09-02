@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Contact } from '../_models/contact';
+import { PaginatedResult } from '../_models/pagination';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +14,39 @@ export class ContactService {
 
   constructor(private http: HttpClient) {}
 
-  getContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.baseUrl + 'contacts');
+  getContacts(page?, itemsPerPage?): Observable<PaginatedResult<Contact[]>> {
+    const paginatedResult: PaginatedResult<Contact[]> = new PaginatedResult<
+      Contact[]
+    >();
+
+    let params = new HttpParams();
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page);
+      params = params.append('pageSize', itemsPerPage);
+    }
+
+    return this.http
+      .get<Contact[]>(this.baseUrl + 'contacts', {
+        observe: 'response',
+        params
+      })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get('pagination')
+            );
+          }
+          return paginatedResult;
+        })
+      );
   }
 
   getContact(id): Observable<Contact> {
     return this.http.get<Contact>(this.baseUrl + 'contacts/' + id);
   }
-
 
   updateContact(id: number, contact: Contact) {
     return this.http.put(this.baseUrl + 'contacts/' + id, contact);

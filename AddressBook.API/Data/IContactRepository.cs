@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AddressBook.API.Helpers;
 using AddressBook.API.Models;
 
 namespace AddressBook.API.Data
@@ -10,7 +11,7 @@ namespace AddressBook.API.Data
 
         void Delete<T>(T entity) where T : class;
         Task<Contact> GetContact(int id);
-        Task<IEnumerable<Contact>> GetContactsAsync();
+        Task<PagedList<Contact>> GetContacts(UserParams UserParams);
         Task<bool> SaveAll();
     }
 }

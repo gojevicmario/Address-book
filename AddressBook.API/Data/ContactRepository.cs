@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AddressBook.API.Helpers;
 using AddressBook.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,10 +30,11 @@ namespace AddressBook.API.Data
             return contact;
         }
 
-        public async Task<IEnumerable<Contact>> GetContactsAsync()
+        public async Task<PagedList<Contact>> GetContacts(UserParams userParams)
         {
-            var contacts = await _context.Contacts.ToListAsync();
-            return contacts;
+            var contacts = _context.Contacts;
+
+            return await PagedList<Contact>.CreateAsync(contacts, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()

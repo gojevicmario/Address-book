@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System;
 using AddressBook.API.Models;
+using AddressBook.API.Helpers;
 
 namespace AddressBook.API.Controllers
 {
@@ -23,17 +24,18 @@ namespace AddressBook.API.Controllers
 
         }
 
-        public async Task<IActionResult> GetContacts()
+        public async Task<IActionResult> GetContacts([FromQuery]UserParams userParams)
         {
-            //bool IsBookmarked = false;
-            var contacts = await _repo.GetContactsAsync();
-            //if(IsBookmarked)
-              //  return Ok(Mapper.Map<IEnumerable<ContactForListDto>>(contacts.Where(c => c.IsBookmarked)));
-            return Ok(Mapper.Map<IEnumerable<ContactForListDto>>(contacts));
+
+            var contacts = await _repo.GetContacts(userParams);
+            var contactsToReturn = Mapper.Map<IEnumerable<ContactForListDto>>(contacts);
+            Response.AddPagination(contacts.Currentpage, contacts.PageSize, contacts.TotalCount, contacts.TotalPages);
+            return Ok(contactsToReturn);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateContact(ContactForUpdateDto newContact){
+        public async Task<IActionResult> CreateContact(ContactForUpdateDto newContact)
+        {
             Contact contact = new Contact();
             _mapper.Map(newContact, contact);
             _repo.Add(contact);
@@ -51,16 +53,18 @@ namespace AddressBook.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateContact(int id, ContactForUpdateDto ContactForUpdateDto){
+        public async Task<IActionResult> UpdateContact(int id, ContactForUpdateDto ContactForUpdateDto)
+        {
             var contactFromRepo = await _repo.GetContact(id);
             _mapper.Map(ContactForUpdateDto, contactFromRepo);
-            if(await _repo.SaveAll())
+            if (await _repo.SaveAll())
                 return NoContent();
             throw new Exception($"Updating contact with {id} failed on save");
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContact(int id){
+        public async Task<IActionResult> DeleteContact(int id)
+        {
             _repo.Delete(await _repo.GetContact(id));
             await _repo.SaveAll();
             return Ok();

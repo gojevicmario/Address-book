@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import { BsDropdownModule, TabsModule} from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule} from 'ngx-bootstrap';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
@@ -58,6 +58,7 @@ import { ContactEditTagResolver } from './_resolvers/contact-edit-tag.resolver';
       FormsModule,
       HttpClientModule,
       TabsModule.forRoot(),
+      PaginationModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       NgxPaginationModule,
       ReactiveFormsModule
