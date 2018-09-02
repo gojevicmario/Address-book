@@ -1,4 +1,28 @@
 <h1>Your address book</h1>
+<!-- <form #searchName="ngForm" (ngSubmit)="loadContacts(test)" class="list-group-item list-group-item-action flex-column align-items-start">
+  <div class="d-flex w-100">
+      <input type="text" name="searchString" [(ngModel)]="searchString" class="col-md-6 form-control list-group-item list-group-item-action">
+      <button type="submit" (click)="changeTestString('firstName')" class="col btn btn-success">Name</button>
+      <button type="submit" (click)="changeTestString('lastName')" class="col btn btn-secondary">Surname</button>
+      <button type="submit" (click)="changeTestString('tag')" class="col btn btn-secondary">Tag</button>
+  </div>
+</form> -->
+<form #searchName="ngForm" (ngSubmit)="loadContacts(test)" class="list-group-item list-group-item-action flex-column align-items-start">
+  <div class="d-flex w-100">
+      <input type="text" name="searchString" [(ngModel)]="searchString" class="col-md-6 form-control list-group-item list-group-item-action">
+      <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Seach by
+        </button>
+        <div class="dropdown-menu">
+          <button type="submit" (click)="changeTestString('firstName')" class="col dropdown-item ">Name</button>
+          <button type="submit" (click)="changeTestString('lastName')" class="col dropdown-item ">Surname</button>
+          <button type="submit" (click)="changeTestString('tag')" class="col   dropdown-item ">Tag</button>
+        </div>
+      </div>
+  </div>
+</form>
+
 <div class="row">
   <div class="col">
     <tabset>

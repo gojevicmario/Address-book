@@ -14,7 +14,11 @@ export class ContactService {
 
   constructor(private http: HttpClient) {}
 
-  getContacts(page?, itemsPerPage?): Observable<PaginatedResult<Contact[]>> {
+  getContacts(
+    page?,
+    itemsPerPage?,
+    userParams?
+  ): Observable<PaginatedResult<Contact[]>> {
     const paginatedResult: PaginatedResult<Contact[]> = new PaginatedResult<
       Contact[]
     >();
@@ -26,6 +30,17 @@ export class ContactService {
       params = params.append('pageSize', itemsPerPage);
     }
 
+    if (userParams != null) {
+      if (userParams.firstName != null) {
+        params = params.append('firstName', userParams.firstName);
+      }
+      if (userParams.lastName != null) {
+        params = params.append('lastName', userParams.lastName);
+      }
+      if (userParams.tag != null) {
+        params = params.append('tag', userParams.tag);
+      }
+    }
     return this.http
       .get<Contact[]>(this.baseUrl + 'contacts', {
         observe: 'response',

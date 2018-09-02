@@ -11,14 +11,25 @@ import { Pagination, PaginatedResult } from '../_models/pagination';
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
+  userParams: any = {};
   pagination: Pagination;
+  searchString: string = null;
+  test: string;
 
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
+  changeTestString(newTestString: string) {
+    this.test = newTestString;
+  }
 
+  clearParams() {
+    this.userParams.tag = null;
+    this.userParams.firstName = null;
+    this.userParams.lastName = null;
+  }
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.contacts = data['contacts'].result;
@@ -43,13 +54,25 @@ export class ContactListComponent implements OnInit {
     );
   }
 
-  loadContacts() {
+  loadContacts(type?: string) {
+    if (type === 'lastName') {
+      this.userParams.lastName = this.searchString;
+    } if (type === 'firstName') {
+      this.userParams.firstName = this.searchString;
+    } if (type === 'tag') {
+      this.userParams.tag = this.searchString;
+    }
     this.contactService
-      .getContacts(this.pagination.currentPage, this.pagination.itemsPerPage)
+      .getContacts(
+        this.pagination.currentPage,
+        this.pagination.itemsPerPage,
+        this.userParams
+      )
       .subscribe(
         (res: PaginatedResult<Contact[]>) => {
           this.contacts = res.result;
           this.pagination = res.pagination;
+          this.clearParams();
         },
         error => {
           console.log(error);
