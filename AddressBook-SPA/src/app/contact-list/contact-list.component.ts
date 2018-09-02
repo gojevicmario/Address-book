@@ -14,22 +14,14 @@ export class ContactListComponent implements OnInit {
   userParams: any = {};
   pagination: Pagination;
   searchString: string = null;
-  test: string;
+  typeString: string;
 
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  changeTestString(newTestString: string) {
-    this.test = newTestString;
-  }
 
-  clearParams() {
-    this.userParams.tag = null;
-    this.userParams.firstName = null;
-    this.userParams.lastName = null;
-  }
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.contacts = data['contacts'].result;
@@ -37,6 +29,16 @@ export class ContactListComponent implements OnInit {
     });
   }
 
+  changeTypeString(typeString: string) {
+    this.typeString = typeString;
+  }
+
+  clearParams() {
+    this.userParams.tag = null;
+    this.userParams.firstName = null;
+    this.userParams.lastName = null;
+    this.userParams.isBookmarked = false;
+  }
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
     this.loadContacts();
@@ -57,11 +59,17 @@ export class ContactListComponent implements OnInit {
   loadContacts(type?: string) {
     if (type === 'lastName') {
       this.userParams.lastName = this.searchString;
-    } if (type === 'firstName') {
+    }
+    if (type === 'firstName') {
       this.userParams.firstName = this.searchString;
-    } if (type === 'tag') {
+    }
+    if (type === 'tag') {
       this.userParams.tag = this.searchString;
     }
+    if (type === 'true') {
+      this.userParams.isBookmarked = true;
+    }
+
     this.contactService
       .getContacts(
         this.pagination.currentPage,

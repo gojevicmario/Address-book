@@ -1,100 +1,59 @@
 <h1>Your address book</h1>
-<!-- <form #searchName="ngForm" (ngSubmit)="loadContacts(test)" class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100">
-      <input type="text" name="searchString" [(ngModel)]="searchString" class="col-md-6 form-control list-group-item list-group-item-action">
-      <button type="submit" (click)="changeTestString('firstName')" class="col btn btn-success">Name</button>
-      <button type="submit" (click)="changeTestString('lastName')" class="col btn btn-secondary">Surname</button>
-      <button type="submit" (click)="changeTestString('tag')" class="col btn btn-secondary">Tag</button>
-  </div>
-</form> -->
-<form #searchName="ngForm" (ngSubmit)="loadContacts(test)" class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100">
-      <input type="text" name="searchString" [(ngModel)]="searchString" class="col-md-6 form-control list-group-item list-group-item-action">
-      <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Seach by
-        </button>
-        <div class="dropdown-menu">
-          <button type="submit" (click)="changeTestString('firstName')" class="col dropdown-item ">Name</button>
-          <button type="submit" (click)="changeTestString('lastName')" class="col dropdown-item ">Surname</button>
-          <button type="submit" (click)="changeTestString('tag')" class="col   dropdown-item ">Tag</button>
-        </div>
+<form #searchName="ngForm" (ngSubmit)="loadContacts(typeString)" class="flex-column col-md-8 align-items-start my-2">
+  <div class="d-flex w-100 ">
+    <input type="text" name="searchString" [(ngModel)]="searchString" class=" form-control list-group-item list-group-item-action">
+    <div class="dropdown col-md-2">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Seach by
+      </button>
+      <div class="dropdown-menu">
+        <button type="submit" (click)="changeTypeString('firstName')" class="col dropdown-item ">Name</button>
+        <button type="submit" (click)="changeTypeString('lastName')" class="col dropdown-item ">Surname</button>
+        <button type="submit" (click)="changeTypeString('tag')" class="col dropdown-item ">Tag</button>
+        <div class="dropdown-divider"></div>
+        <button type="button" (click)="loadContacts()" class="col dropdown-item ">Reset search</button>
       </div>
+    </div>
   </div>
 </form>
+<div class="btn-group btn-group-toggle my-2" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-primary" (click)="loadContacts('true')">Bookmarks</button>
+  <button type="button" class="btn btn-outline-primary" (click)="loadContacts('false')">All contacts</button>
+</div>
 
 <div class="row">
   <div class="col">
-    <tabset>
-      <tab heading="Bookmarked contacts">
-        <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th style="width: 10%">Ordinal</th>
-              <th style="width: 40%">First name</th>
-              <th style="width: 40%">Last name</th>
-              <th style="width: 10%" colspan="3">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let contact of contacts; let i = index;">
-              <th scope="row">{{i+1}}</th>
-              <td>{{contact.firstName}}</td>
-              <td>{{contact.lastName}}</td>
-              <td>
-                <div class="btn btn-block btn-primary" [routerLink]="['/contacts/details/', contact.id]">Details</div>
-              </td>
-              <td>
-                <div class="btn btn-block btn-warning" [routerLink]="['/contacts/edit/', contact.id]">Edit</div>
-              </td>
-              <td>
-                <div class="btn btn-block btn-danger" (click)="deleteContact(contact.id)">Delete</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="mx-auto" style="max-width: 50%;">
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
-        </div>
-      </tab>
-      <tab heading="All contacts">
-        <table class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th style="width: 10%">Ordinal</th>
-              <th style="width: 40%">First name</th>
-              <th style="width: 40%">Last name</th>
-              <th style="width: 10%" colspan="3">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let contact of contacts;let i= index">
-              <th scope="row">{{i+1}}</th>
-              <td>{{contact.firstName}}</td>
-              <td>{{contact.lastName}}</td>
-              <td>
-                <div class="btn btn-block btn-primary" [routerLink]="['/contacts/details/', contact.id]">Details</div>
-              </td>
-              <td>
-                <div class="btn btn-block btn-warning" [routerLink]="['/contacts/edit/', contact.id]">Edit</div>
-              </td>
-              <td>
-                <div class="btn btn-block btn-danger" (click)="deleteContact(contact.id)">Delete</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div  >
-          <pagination [boundaryLinks]="true"
-          [totalItems]="pagination.totalItems"
-          [itemsPerPage]="pagination.itemsPerPage"
-          [(ngModel)]="pagination.currentPage"
-          (pageChanged) = "pageChanged($event)"
-          previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th style="width: 10%">Ordinal</th>
+          <th style="width: 40%">First name</th>
+          <th style="width: 40%">Last name</th>
+          <th style="width: 10%" colspan="3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts;let i= index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{contact.firstName}}</td>
+          <td>{{contact.lastName}}</td>
+          <td>
+            <div class="btn btn-block btn-primary" [routerLink]="['/contacts/details/', contact.id]">Details</div>
+          </td>
+          <td>
+            <div class="btn btn-block btn-warning" [routerLink]="['/contacts/edit/', contact.id]">Edit</div>
+          </td>
+          <td>
+            <div class="btn btn-block btn-danger" (click)="deleteContact(contact.id)">Delete</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
 
-          </pagination>
-        </div>
-      </tab>
-    </tabset>
+      </pagination>
+    </div>
   </div>
 </div>

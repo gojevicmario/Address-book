@@ -51,7 +51,7 @@
         </form>
         <div class="row">
             <button [disabled]="!editForm.dirty" form="editContactForm" class="btn btn-success col-md-6">Save</button>
-            <button class="btn btn-danger col-md-6">Cancel</button>
+            <button class="btn btn-danger col-md-6" (click)="cancel()">Cancel</button>
         </div>
     </div>
 

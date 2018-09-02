@@ -19,9 +19,7 @@ export class ContactService {
     itemsPerPage?,
     userParams?
   ): Observable<PaginatedResult<Contact[]>> {
-    const paginatedResult: PaginatedResult<Contact[]> = new PaginatedResult<
-      Contact[]
-    >();
+    const paginatedResult: PaginatedResult<Contact[]> = new PaginatedResult<Contact[]>();
 
     let params = new HttpParams();
 
@@ -39,6 +37,9 @@ export class ContactService {
       }
       if (userParams.tag != null) {
         params = params.append('tag', userParams.tag);
+      }
+      if (userParams.isBookmarked != null) {
+        params = params.append('isBookmarked', userParams.isBookmarked);
       }
     }
     return this.http

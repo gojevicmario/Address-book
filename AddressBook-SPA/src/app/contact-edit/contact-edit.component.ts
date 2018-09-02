@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Email } from '../_models/email';
 import { Tag } from '../_models/tag';
 import { Number } from '../_models/number';
+import {Location} from '@angular/common';
 import { DetailsService } from '../_services/Details.service';
 import { EmailComponent } from '../details/email/email.component';
 
@@ -30,7 +31,8 @@ export class ContactEditComponent implements OnInit {
     private contactService: ContactService,
     private detailsService: DetailsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -40,6 +42,10 @@ export class ContactEditComponent implements OnInit {
       this.numbers = data['numbers'];
       this.tags = data['tags'];
     });
+  }
+
+  cancel() {
+    this.location.back();
   }
 
   createEmail() {

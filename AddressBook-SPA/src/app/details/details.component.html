@@ -12,6 +12,10 @@
                 <b>City: </b> {{contact.city}}</li>
             <li class="list-group-item list-group-item-action">
                 <b>Country: </b> {{contact.country}} </li>
+            <li class="list-group-item list-group-item-action">
+                <b>bookmarked: </b>
+                <input name="isBookmarked" type="checkbox" disabled=true [(ngModel)]="contact.isBookmarked">
+            </li>
         </ul>
 
     </div>
