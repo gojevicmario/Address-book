@@ -31,7 +31,7 @@ export class CreateContactComponent implements OnInit {
     this.createContactForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      isBookmarked: ['false'],
+      isBookmarked: [ false],
       address: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required]
@@ -42,8 +42,8 @@ export class CreateContactComponent implements OnInit {
     if (this.createContactForm.valid) {
       this.contact = Object.assign({}, this.createContactForm.value);
       this.contactService.createContact(this.contact).subscribe(
-        next => {
-          this.router.navigateByUrl('/contacts');
+        response => {
+          this.router.navigateByUrl('/contacts/edit/' + response);
         },
         error => {
           console.log(error);

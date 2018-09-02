@@ -38,7 +38,8 @@ namespace AddressBook.API.Controllers
             _mapper.Map(newContact, contact);
             _repo.Add(contact);
             await _repo.SaveAll();
-            return Ok();
+            int id = contact.Id;
+            return Ok(id);
         }
 
         [HttpGet("{id}")]
