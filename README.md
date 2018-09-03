@@ -87,13 +87,13 @@ you should see some mock data in JSON format
 
 3. Open a new terminal windows and run the commands. **The second  and third commands might take a while to execute**
 
- ```
+   ```
 
-  cd hrcaddressbook/AddressBook.API
+    cd hrcaddressbook/AddressBook.API
 
-  npm install
+    npm install
 
-  ng serve
+    ng serve
 
   ```
 
