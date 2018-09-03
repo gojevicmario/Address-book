@@ -49,7 +49,7 @@ GIT bash
 
 
 
- 1. Clone the git repository. Open GIT bash and enter the following lines
+1. Clone the git repository. Open GIT bash and enter the following lines
 
 
 
@@ -63,7 +63,7 @@ git clone https://mgojevic@bitbucket.org/mgojevic/hrcaddressbook.git
 
 
 
- 2. Update the database. Run the following commands
+2. Update the database. Run the following commands
 
 
 
@@ -85,7 +85,7 @@ you should see some mock data in JSON format
 
 
 
- 3. Open a new terminal windows and run the commands. **The second  and third commands might take a while to execute**
+3. Open a new terminal windows and run the commands. **The second  and third commands might take a while to execute**
 
  ```
 

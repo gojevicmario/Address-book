@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Email } from '../_models/email';
 import { Tag } from '../_models/tag';
 import { Number } from '../_models/number';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { DetailsService } from '../_services/Details.service';
 import { EmailComponent } from '../details/email/email.component';
 
@@ -43,6 +43,7 @@ export class ContactEditComponent implements OnInit {
       this.tags = data['tags'];
     });
   }
+
 
   cancel() {
     this.location.back();
@@ -90,6 +91,7 @@ export class ContactEditComponent implements OnInit {
       next => {
         this.contactService.getContact(this.contact.id).subscribe(data => {
           this.contact = data;
+          this.editContactForm.reset(this.contact);
         });
       },
       error => {
