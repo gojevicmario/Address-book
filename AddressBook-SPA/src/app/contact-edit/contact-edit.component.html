@@ -49,9 +49,9 @@
                 </div>
             </div>
         </form>
-        <div class="row">
-            <button [disabled]="!editForm.dirty" form="editContactForm" class="btn btn-success col-md-6">Save</button>
-            <button class="btn btn-danger col-md-6" (click)="cancel()">Cancel</button>
+        <div class="row justify-content-center my-4">
+            <button [disabled]="!editForm.dirty" form="editContactForm" class="btn btn-success col-md-4 mx-4">Save</button>
+            <button class="btn btn-danger col-md-4" (click)="cancel()">Cancel</button>
         </div>
     </div>
 
@@ -61,57 +61,57 @@
                 <tab heading="Emails">
                     <div *ngFor="let email of emails; let i = index;" class="list-group-item list-group-item-action flex-column align-items-start">
                         <form #editDetailsForm="ngForm" (ngSubmit)="updateEmail(email.id,i)">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="m-auto col-md-2">{{i+1}}</h5>
+                            <div class="row">
+                                <h5 class="col-md-1 my-auto">{{i+1}}</h5>
                                 <input name="emailAddress{{i}}" class="col-md-6 form-control list-group-item list-group-item-action" [(ngModel)]="emails[i].emailAddress">
-                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success">Save</button>
+                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success mx-auto">Save</button>
                                 <button class="col-md-2 btn btn-danger" (click)="deleteEmail(email.id,i)">Delete</button>
                             </div>
                         </form>
                     </div>
                     <form #editEmailDetails="ngForm" (ngSubmit)="createEmail()" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100">
-                            <h5 class="m-auto col-md-2">{{emails.length+1}}</h5>
+                        <div class="row">
+                            <h5 class="col-md-1 my-auto">{{emails.length+1}}</h5>
                             <input type="text" name="newEmail" [(ngModel)]="newEmail.emailAddress" class="col-md-6 form-control list-group-item list-group-item-action">
-                            <button type="submit" [disabled]="!editEmailDetails.dirty" class="col-md-4 btn btn-success">Add</button>
+                            <button type="submit" [disabled]="!editEmailDetails.dirty" class="col-md-2 btn btn-success mx-4">Add</button>
                         </div>
                     </form>
                 </tab>
                 <tab heading="Numbers">
                     <div *ngFor="let number of numbers; let i = index;" class="list-group-item list-group-item-action flex-column align-items-start">
                         <form #editDetailsForm="ngForm" (ngSubmit)="updateNumber(number.id,i)">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="m-auto col-md-2">{{i+1}}</h5>
+                            <div class="row">
+                                <h5 class="col-md-1 my-auto">{{i+1}}</h5>
                                 <input name="phoneNumber{{i}}" class="col-md-6 form-control list-group-item list-group-item-action" [(ngModel)]="numbers[i].phoneNumber">
-                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success">Save</button>
+                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success mx-auto">Save</button>
                                 <button class="col-md-2 btn btn-danger" (click)="deleteNumber(number.id,i)">Delete</button>
                             </div>
                         </form>
                     </div>
                     <form #editNumberDetails="ngForm" (ngSubmit)="createNumber()" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100">
-                            <h5 class="m-auto col-md-2">{{numbers.length+1}}</h5>
+                        <div class="row">
+                            <h5 class="col-md-1 my-auto">{{numbers.length+1}}</h5>
                             <input type="text" name="newNumber" [(ngModel)]="newNumber.phoneNumber" class="col-md-6 form-control list-group-item list-group-item-action">
-                            <button type="submit" [disabled]="!editNumberDetails.dirty" class="col-md-4 btn btn-success">Add</button>
+                            <button type="submit" [disabled]="!editNumberDetails.dirty" class="col-md-2 btn btn-success mx-4">Add</button>
                         </div>
                     </form>
                 </tab>
                 <tab heading="Tags">
                     <div *ngFor="let tag of tags; let i = index;" class="list-group-item list-group-item-action flex-column align-items-start">
                         <form #editDetailsForm="ngForm" (ngSubmit)="updateTag(tag.id,i)">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="m-auto col-md-2">{{i+1}}</h5>
+                            <div class="row">
+                                <h5 class="col-md-1 my-auto">{{i+1}}</h5>
                                 <input name="tagName{{i}}" class="col-md-6 form-control list-group-item list-group-item-action" [(ngModel)]="tags[i].tagName">
-                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success">Save</button>
+                                <button [disabled]="!editDetailsForm.dirty" type="submit" class="col-md-2 btn btn-success mx-auto">Save</button>
                                 <button class="col-md-2 btn btn-danger" (click)="deleteTag(tag.id,i)">Delete</button>
                             </div>
                         </form>
                     </div>
                     <form #editTagDetails="ngForm" (ngSubmit)="createTag()" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100">
-                            <h5 class="m-auto col-md-2">{{tags.length+1}}</h5>
+                        <div class="row">
+                            <h5 class="col-md-1 my-auto">{{tags.length+1}}</h5>
                             <input type="text" name="newTag" [(ngModel)]="newTag.tagName" class="col-md-6 form-control list-group-item list-group-item-action">
-                            <button type="submit" [disabled]="!editTagDetails.dirty" class="col-md-4 btn btn-success">Add</button>
+                            <button type="submit" [disabled]="!editTagDetails.dirty" class="col-md-2 btn btn-success mx-4">Add</button>
                         </div>
                     </form>
                 </tab>

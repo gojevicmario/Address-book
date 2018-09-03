@@ -16,13 +16,19 @@
     </div>
   </div>
 </form>
-<div class="btn-group btn-group-toggle my-2" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-outline-primary" (click)="loadContacts('true')">Bookmarks</button>
-  <button type="button" class="btn btn-outline-primary" (click)="loadContacts('false')">All contacts</button>
+
+<div class="btn-group btn-group-toggle my-2" data-toggle="buttons" role="group" aria-label="Basic example">
+
+  <label class="btn btn-outline-primary active" (click)="loadContacts('true')"> Bookmarks
+    <input type="radio">
+  </label>
+  <label class="btn btn-outline-primary" (click)="loadContacts('false')"> All contacts
+    <input type="radio">
+  </label>
 </div>
 
 <div class="row">
-  <div class="col">
+  <div class="col-md-12">
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
@@ -49,11 +55,9 @@
         </tr>
       </tbody>
     </table>
-    <div>
-      <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
-        (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-
-      </pagination>
-    </div>
+    
   </div>
+      <pagination  [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+      </pagination>
 </div>

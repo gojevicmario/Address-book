@@ -30,6 +30,7 @@ import { ContactEditEmailResolver } from './_resolvers/contact-edit-email.resolv
 import { SafeStylePipe } from './_pipes/safeStyle.pipe';
 import { ContactEditNumberResolver } from './_resolvers/contact-edit-number.resolver';
 import { ContactEditTagResolver } from './_resolvers/contact-edit-tag.resolver';
+import { AlertifyService } from './_services/Alertify.service';
 
 
 
@@ -66,6 +67,7 @@ import { ContactEditTagResolver } from './_resolvers/contact-edit-tag.resolver';
    providers: [
        ContactService,
        DetailsService,
+       AlertifyService,
        ContactDetailResolver,
        ContactEditEmailResolver,
        ContactEditNumberResolver,

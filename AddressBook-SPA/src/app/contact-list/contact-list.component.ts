@@ -3,6 +3,7 @@ import { Contact } from '../_models/contact';
 import { ContactService } from '../_services/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pagination, PaginatedResult } from '../_models/pagination';
+import { AlertifyService } from '../_services/Alertify.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -19,7 +20,8 @@ export class ContactListComponent implements OnInit {
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertify: AlertifyService
   ) {}
 
   ngOnInit() {
@@ -45,15 +47,18 @@ export class ContactListComponent implements OnInit {
   }
 
   deleteContact(id) {
-    this.contactService.deleteContact(id).subscribe(
-      next => {
-        this.contacts.splice(this.contacts.findIndex(c => c.id === id), 1);
-        this.loadContacts();
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.alertify.confirm('By deleteing the contact you also delete all associated items!', () => {
+      this.contactService.deleteContact(id).subscribe(
+        next => {
+          this.contacts.splice(this.contacts.findIndex(c => c.id === id), 1);
+          this.loadContacts();
+          this.alertify.success('contact deleted!');
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    });
   }
 
   loadContacts(type?: string) {

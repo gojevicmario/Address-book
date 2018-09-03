@@ -8,7 +8,7 @@ import { Tag } from '../_models/tag';
 import { Number } from '../_models/number';
 import { Location } from '@angular/common';
 import { DetailsService } from '../_services/Details.service';
-import { EmailComponent } from '../details/email/email.component';
+import { AlertifyService } from '../_services/Alertify.service';
 
 @Component({
   selector: 'app-contact-edit',
@@ -32,7 +32,8 @@ export class ContactEditComponent implements OnInit {
     private detailsService: DetailsService,
     private route: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private alertify: AlertifyService
   ) {}
 
   ngOnInit() {
@@ -44,7 +45,6 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
-
   cancel() {
     this.location.back();
   }
@@ -54,6 +54,7 @@ export class ContactEditComponent implements OnInit {
       next => {
         this.detailsService.getEmails(this.contact.id).subscribe(data => {
           this.emails = data;
+          this.alertify.success('Email added you have');
         });
       },
       error => {
@@ -92,6 +93,7 @@ export class ContactEditComponent implements OnInit {
         this.contactService.getContact(this.contact.id).subscribe(data => {
           this.contact = data;
           this.editContactForm.reset(this.contact);
+          this.alertify.success('Contact updated with major success');
         });
       },
       error => {
@@ -105,9 +107,14 @@ export class ContactEditComponent implements OnInit {
       .subscribe();
     this.detailsService
       .updateEmail(this.contact.id, pkId, this.emails[index])
-      .subscribe(error => {
-        console.log(error);
-      });
+      .subscribe(
+        success => {
+          this.alertify.success('Email updated you have');
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   updateNumber(pkId: number, index: number) {
@@ -134,14 +141,17 @@ export class ContactEditComponent implements OnInit {
     const email = this.detailsService
       .getEmail(this.contact.id, pkId)
       .subscribe();
-    this.detailsService.deleteEmail(this.contact.id, pkId).subscribe(
-      next => {
-        this.emails.splice(this.emails.findIndex(e => e.id === pkId), 1);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.alertify.confirm('You are about to delete the email', () => {
+      this.detailsService.deleteEmail(this.contact.id, pkId).subscribe(
+        next => {
+          this.emails.splice(this.emails.findIndex(e => e.id === pkId), 1);
+          this.alertify.success('Email deleted!');
+        },
+        error => {
+          this.alertify.error('something went wrong!');
+        }
+      );
+    });
   }
 
   deleteNumber(pkId: number, index: number) {

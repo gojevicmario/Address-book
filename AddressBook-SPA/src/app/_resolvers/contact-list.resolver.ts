@@ -9,10 +9,11 @@ import { catchError } from 'rxjs/operators';
 export class ContactListResolver implements Resolve<Contact[]> {
   pageNumber = 1;
   pageSize = 5;
+  userParams: any = {isBookmarked: true};
   constructor(private contactService: ContactService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Contact[]> {
-    return this.contactService.getContacts(this.pageNumber, this.pageSize).pipe(
+    return this.contactService.getContacts(this.pageNumber, this.pageSize, this.userParams).pipe(
       catchError(error => {
         console.log('greska');
         this.router.navigate(['/contacts']);
