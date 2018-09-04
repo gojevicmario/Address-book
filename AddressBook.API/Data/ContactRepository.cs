@@ -42,11 +42,12 @@ namespace AddressBook.API.Data
                 contacts = _context.Contacts.Where(c => string.Equals(c.FirstName, userParams.FirstName, StringComparison.OrdinalIgnoreCase));
             else if (!string.IsNullOrEmpty(userParams.LastName))
                 contacts = _context.Contacts.Where(c => string.Equals(c.LastName, userParams.LastName, StringComparison.OrdinalIgnoreCase));
-            else if (!string.IsNullOrEmpty(userParams.Tag)){
-                
-                // var idList = _context.Tags.Where(t => string.Equals(t.TagName, userParams.Tag, StringComparison.OrdinalIgnoreCase))
-                // .Select( c => );
-                // contacts = _context.Contacts.Where( c => idList.Contains(c.Id) );
+            else if (!string.IsNullOrEmpty(userParams.Tag))
+            {
+
+                var tag = await _context.ContactsTags.Select(ct => ct.Tag).
+                FirstOrDefaultAsync(t => t.TagName.Equals(userParams.Tag, StringComparison.InvariantCultureIgnoreCase));
+                contacts = _context.ContactsTags.Where(ct => ct.TagId == tag.Id).Select(ct => ct.Contact).AsQueryable();
 
             }
             return await PagedList<Contact>.CreateAsync(contacts, userParams.PageNumber, userParams.PageSize);

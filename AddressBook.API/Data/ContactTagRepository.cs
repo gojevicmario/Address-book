@@ -45,7 +45,7 @@ namespace AddressBook.API.Data
             return contacts;
         }
 
-        public async Task<List<ContactTag>> GetContacstTags()
+        public async Task<IEnumerable<ContactTag>> GetContacstTags()
         {
             var contacts = await _context.ContactsTags.ToListAsync();
             return contacts;

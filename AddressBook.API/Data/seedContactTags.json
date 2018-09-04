@@ -1,0 +1,66 @@
+[
+    {
+      "contactId": 5,
+      "tagId": 2
+    },
+    {
+      "contactId": 18,
+      "tagId": 1
+    },
+    {
+      "contactId": 18,
+      "tagId": 2
+    },
+    {
+      "contactId": 13,
+      "tagId": 3
+    },
+    {
+      "contactId": 7,
+      "tagId": 2
+    },
+    {
+      "contactId": 17,
+      "tagId": 4
+    },
+    {
+      "contactId": 3,
+      "tagId": 4
+    },
+    {
+      "contactId": 12,
+      "tagId": 2
+    },
+    {
+      "contactId": 12,
+      "tagId": 4
+    },
+    {
+      "contactId": 13,
+      "tagId": 4
+    },
+    {
+      "contactId": 19,
+      "tagId": 4
+    },
+    {
+      "contactId": 10,
+      "tagId": 2
+    },
+    {
+      "contactId": 12,
+      "tagId": 1
+    },
+    {
+      "contactId": 20,
+      "tagId": 1
+    },
+    {
+      "contactId": 7,
+      "tagId": 3
+    },
+    {
+      "contactId": 9,
+      "tagId": 1
+    }
+  ]

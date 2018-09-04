@@ -71,7 +71,7 @@ export class ContactEditComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        this.alertify.error('The tag you want to enter is already in the list!');
       }
     );
   }
@@ -133,7 +133,9 @@ export class ContactEditComponent implements OnInit {
     this.detailsService
       .updateTag(this.contact.id, pkId, this.tags[index])
       .subscribe(error => {
-        console.log(error);
+        this.alertify.error(
+          'The tag is already in the list!'
+        );
       });
   }
 

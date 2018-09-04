@@ -29,6 +29,7 @@ export class ContactListComponent implements OnInit {
       this.contacts = data['contacts'].result;
       this.pagination = data['contacts'].pagination;
     });
+    // this.loadContacts('true');
   }
 
   changeTypeString(typeString: string) {
@@ -41,38 +42,41 @@ export class ContactListComponent implements OnInit {
     this.userParams.lastName = null;
     this.userParams.isBookmarked = false;
   }
+
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
     this.loadContacts();
   }
 
   deleteContact(id) {
-    this.alertify.confirm('By deleteing the contact you also delete all associated items!', () => {
-      this.contactService.deleteContact(id).subscribe(
-        next => {
-          this.contacts.splice(this.contacts.findIndex(c => c.id === id), 1);
-          this.loadContacts();
-          this.alertify.success('contact deleted!');
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    });
+    this.alertify.confirm(
+      'By deleteing the contact you also delete all associated items!',
+      () => {
+        this.contactService.deleteContact(id).subscribe(
+          next => {
+            this.contacts.splice(this.contacts.findIndex(c => c.id === id), 1);
+            this.loadContacts();
+            this.alertify.success('contact deleted!');
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    );
   }
 
   loadContacts(type?: string) {
     if (type === 'lastName') {
       this.userParams.lastName = this.searchString;
-    }
-    if (type === 'firstName') {
+    } else if (type === 'firstName') {
       this.userParams.firstName = this.searchString;
-    }
-    if (type === 'tag') {
+    } else if (type === 'tag') {
       this.userParams.tag = this.searchString;
-    }
-    if (type === 'true') {
+    } else if (type === 'true') {
       this.userParams.isBookmarked = true;
+    } else if (type === 'false') {
+      this.userParams.isBookmarked = false;
     }
 
     this.contactService
@@ -85,10 +89,9 @@ export class ContactListComponent implements OnInit {
         (res: PaginatedResult<Contact[]>) => {
           this.contacts = res.result;
           this.pagination = res.pagination;
-          this.clearParams();
         },
         error => {
-          console.log(error);
+          console.log(this.userParams);
         }
       );
   }
