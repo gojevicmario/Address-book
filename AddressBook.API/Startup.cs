@@ -41,6 +41,7 @@ namespace AddressBook.Api
             services.AddTransient<EmailRepository>();
             services.AddTransient<TagRepository>();
             services.AddTransient<NumberRepository>();
+            services.AddScoped<ContactTagRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
         }
 
@@ -57,7 +58,7 @@ namespace AddressBook.Api
             }
 
             //app.UseHttpsRedirection();
-            seeder.SeedContacts();
+            // seeder.SeedContacts();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }

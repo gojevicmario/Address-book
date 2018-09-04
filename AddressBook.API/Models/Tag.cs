@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AddressBook.API.Models
@@ -7,8 +8,8 @@ namespace AddressBook.API.Models
         [Key]
         public int Id { get; set; }
         public string TagName { get; set; }
-        public Contact Contact { get; set; }
-        public int ContactId { get; set; }
+        public ICollection<ContactTag> ContactsTags { get; set; }
+
 
     }
 }

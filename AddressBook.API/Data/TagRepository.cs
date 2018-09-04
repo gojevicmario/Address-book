@@ -26,13 +26,13 @@ namespace AddressBook.API.Data
 
         public async Task<Tag> GetTag(int FkId, int PkId)
         {
-            var Tag = await _context.Tags.Where( e => e.ContactId == FkId).FirstOrDefaultAsync( e => e.Id == PkId);
+            var Tag = await _context.Tags.FirstOrDefaultAsync( t => t.Id == PkId);
             return Tag;
         }
 
         public async Task<IEnumerable<Tag>> GetTags(int FkId)
         {
-            var Tags = await _context.Tags.Where( e => e.ContactId == FkId).ToListAsync();
+            var Tags = await _context.ContactsTags.Where( ct => ct.ContactId == FkId).Select( ct => ct.Tag).ToListAsync();
             return Tags;
         }
 

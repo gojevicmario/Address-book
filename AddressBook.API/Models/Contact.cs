@@ -15,7 +15,7 @@ namespace AddressBook.API.Models
         public bool IsBookmarked { get; set; }
         public List<Number> Numbers { get; set; }        
         public List<Email> Emails { get; set; }
-        public List<Tag> Tags { get; set; }
+        public ICollection<ContactTag> ContactsTags { get; set; }
 
     }
 }

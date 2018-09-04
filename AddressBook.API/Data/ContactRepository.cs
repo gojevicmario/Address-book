@@ -44,8 +44,9 @@ namespace AddressBook.API.Data
                 contacts = _context.Contacts.Where(c => string.Equals(c.LastName, userParams.LastName, StringComparison.OrdinalIgnoreCase));
             else if (!string.IsNullOrEmpty(userParams.Tag)){
                 
-                var idList = _context.Tags.Where(t => string.Equals(t.TagName, userParams.Tag, StringComparison.OrdinalIgnoreCase)).Select( t => t.ContactId);
-                contacts = _context.Contacts.Where( c => idList.Contains(c.Id) );
+                // var idList = _context.Tags.Where(t => string.Equals(t.TagName, userParams.Tag, StringComparison.OrdinalIgnoreCase))
+                // .Select( c => );
+                // contacts = _context.Contacts.Where( c => idList.Contains(c.Id) );
 
             }
             return await PagedList<Contact>.CreateAsync(contacts, userParams.PageNumber, userParams.PageSize);
