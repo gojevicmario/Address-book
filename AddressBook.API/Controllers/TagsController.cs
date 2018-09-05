@@ -28,7 +28,6 @@ namespace AddressBook.API.Controllers
         {
             Tag tag = new Tag();
             int tagIdFromRepo = await _contactTagRepo.getTagId(details.tagName);
-            // Ako tag ne postoji
             if (tagIdFromRepo == -1)
             {
                 tag.TagName = details.tagName;
@@ -40,7 +39,7 @@ namespace AddressBook.API.Controllers
             else
             {
                 var tagsFromRepo = await _contactTagRepo.GetTags(contactId);
-                if (tagsFromRepo.Any(t => t.TagName == details.tagName)) //Ako zeli dodati vec postojeci
+                if (tagsFromRepo.Any(t => t.TagName == details.tagName))
                 {
                     return BadRequest();
                 }
@@ -80,12 +79,7 @@ namespace AddressBook.API.Controllers
         DetailInfoForUpdateDto detailInfoForUpdateDto)
         {
 
-            // Ako je samo taj ID vezan moze odmah update
-            // Ako nije ukloni vezu iz cotnactsTagsa i dodaj novi tag
-            // var contactTagsFromRepo = await _contactTagRepo.GetContacstTags();
             var tag = await _tagsRepo.GetTag(contactId, tagId);
-
-            // if (contactTagsFromRepo.Count(ct => ct.TagId == tagId) == 1 )
             if( (await _contactTagRepo.GetNumberOfContactsForTag(tagId)) == 1 )
             {
                 tag.TagName = detailInfoForUpdateDto.tagName;
