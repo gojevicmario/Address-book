@@ -41,11 +41,12 @@ export class ContactListComponent implements OnInit {
     this.userParams.firstName = null;
     this.userParams.lastName = null;
     this.userParams.isBookmarked = false;
+    this.searchString = null;
   }
 
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
-    this.loadContacts();
+    this.loadContacts(this.typeString);
   }
 
   deleteContact(id) {
@@ -77,6 +78,8 @@ export class ContactListComponent implements OnInit {
       this.userParams.isBookmarked = true;
     } else if (type === 'false') {
       this.userParams.isBookmarked = false;
+    } else {
+      this.clearParams();
     }
 
     this.contactService
@@ -87,6 +90,9 @@ export class ContactListComponent implements OnInit {
       )
       .subscribe(
         (res: PaginatedResult<Contact[]>) => {
+          if(res.result.length === 0) {
+            this.alertify.error('No contacts match the search criteria');
+          }
           this.contacts = res.result;
           this.pagination = res.pagination;
         },

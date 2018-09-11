@@ -15,7 +15,7 @@ export class ContactListResolver implements Resolve<Contact[]> {
   resolve(route: ActivatedRouteSnapshot): Observable<Contact[]> {
     return this.contactService.getContacts(this.pageNumber, this.pageSize, this.userParams).pipe(
       catchError(error => {
-        console.log('greska');
+        console.log(error);
         this.router.navigate(['/contacts']);
         return of(null);
       })
