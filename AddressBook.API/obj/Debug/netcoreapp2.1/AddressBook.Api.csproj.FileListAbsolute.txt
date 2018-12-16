@@ -12,3 +12,17 @@ C:\Users\Mario\Desktop\hrcaddressbook\AddressBook.API\obj\Debug\netcoreapp2.1\Ad
 C:\Users\Mario\Desktop\hrcaddressbook\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.RazorTargetAssemblyInfo.cache
 C:\Users\Mario\Desktop\hrcaddressbook\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.dll
 C:\Users\Mario\Desktop\hrcaddressbook\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.pdb
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\bin\Debug\netcoreapp2.1\AddressBook.Api.deps.json
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\bin\Debug\netcoreapp2.1\AddressBook.Api.runtimeconfig.json
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\bin\Debug\netcoreapp2.1\AddressBook.Api.runtimeconfig.dev.json
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\bin\Debug\netcoreapp2.1\AddressBook.Api.dll
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\bin\Debug\netcoreapp2.1\AddressBook.Api.pdb
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.csprojAssemblyReference.cache
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.RazorAssemblyInfo.cache
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.RazorAssemblyInfo.cs
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.AssemblyInfoInputs.cache
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.AssemblyInfo.cs
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.RazorTargetAssemblyInfo.cache
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.dll
+C:\Users\Mario\Desktop\Address-book\AddressBook.API\obj\Debug\netcoreapp2.1\AddressBook.Api.pdb
