@@ -55,7 +55,7 @@ GIT bash
 
 ```
 
-git clone https://mgojevic@bitbucket.org/mgojevic/hrcaddressbook.git
+git clone https://github.com/gojevicmario/Address-book.git
 
 
 
@@ -86,16 +86,15 @@ you should see some mock data in JSON format
 
 
 3. Open a new terminal windows and run the commands. **The second  and third commands might take a while to execute**
+```
 
-   ```
+  cd hrcaddressbook/AddressBook-SPA
 
-    cd hrcaddressbook/AddressBook.API
+  npm install
 
-    npm install
+  ng serve
 
-    ng serve
-
-  ```
+```
 
 4. Visit http://localhost:4200/ to test the application
 
